@@ -1,0 +1,89 @@
+.ham{
+    display: flex;
+    flex-direction: column;
+    width: 35px;
+    gap: 5px;
+}
+
+.ham span {
+    width: 100%;
+    height: 3px;
+    background-color: white;
+    border-radius: 5px;
+    transform-origin: 7px;
+    transition: .2s ease;
+    z-index: 3;
+}
+
+
+.ham span:first-child{
+    transform: var(--firstChild);
+}
+
+
+.ham span:nth-child(2){
+    transform: var(--secondChild);
+    opacity: var(--opacity);
+}
+
+.ham span:last-child{
+    transform: var(--lastChild);
+}
+
+.mobileMenu{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(1, 106, 106);
+    padding: 5px;
+    height: 100vh;
+    z-index: 2;
+    left: 0px;
+    width: 50vw;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    transform: var(--transform);
+    transition: .2s ease;
+}
+.mobileMenu a{
+    display: flex; 
+    align-items: center;
+    gap: 5px;
+}
+
+
+.quizeSublinks{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: absolute;
+    background-color: rgb(1, 106, 106);
+    top: 370px;
+    left: 150px;
+    padding: 20px;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    pointer-events: none;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: .2s ease;
+}
+
+.quizeLink:focus + .quizeSublinks{
+    opacity: 1;
+    transform: translateX(0%);
+    pointer-events: all;
+}
+
+.quizeLink:focus {
+    background-color: darkcyan;
+    border-radius: 5px;
+    padding: 2px;
+}
+
+.quizeSublinks a{
+    white-space: nowrap;
+}
