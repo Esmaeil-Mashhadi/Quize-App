@@ -1,0 +1,112 @@
+.container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+.right{
+    width: 100%;
+}
+.left{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    justify-content: center;
+    margin-left: 50px;
+    
+}
+
+.profile svg{
+    scale: 2;
+}
+.username svg{
+    scale: 2;
+}
+.profile{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+    font-size: 20px;
+    white-space: nowrap;
+}
+
+.profile span{
+    color: darkcyan;
+    margin-left: 10px;
+}
+.username h3{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.username span{
+    color: darkcyan;
+    margin-left: 10px;
+}
+
+.username {
+    display: flex;
+    gap: 10px;
+    font-weight: bold;
+    align-items: center;
+    white-space: nowrap;
+    transition: .2s ease;
+    font-size: 20px;
+}
+
+.username button{
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: .2s ease;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background-color: transparent;
+    border: none;
+    height: 30px;
+    margin-left: 10px;
+}
+
+.username:hover > button{
+    opacity: 1;
+    pointer-events: all;
+}
+
+.username input {
+ width: fit-content;
+ padding: 5px;
+ border-radius: 5px;
+ border: none;
+ box-shadow: 0px 0px 5px black;
+ outline: none;
+ color: black;
+}
+
+.logOut {
+    width: fit-content;
+    color: black;
+    border-radius: 5px;
+    padding: 5px;
+    font-weight: bold;
+    background-color: palevioletred;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: .2s ease;
+}
+.logOut svg{
+    scale: 1.4;
+    filter: invert(100%);
+}
+
+.logOut:hover{
+    box-shadow: 0px 0px 5px pink;
+}
+

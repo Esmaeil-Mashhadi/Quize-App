@@ -9,8 +9,8 @@ import { MdLeaderboard } from "react-icons/md";
 import { IoMdArrowDropright } from "react-icons/io";
 
 
-function HameMenu() {
-
+ function HameMenu({permission}) {
+   
     const [clicked , setClicked] = useState(false)
     const hamHandler = ()=>{
         setClicked(!clicked)
@@ -27,7 +27,6 @@ function HameMenu() {
         '--transform' : clicked ? 'translateX(0px)' : "translateX(-100%)"
     }
 
-    console.log(transform);
   return (
     <div>
         <div style={hamStyle} onClick={hamHandler}  className={styles.ham}>
@@ -43,7 +42,9 @@ function HameMenu() {
                              <Link  href=""><IoSettings/> settings</Link>
                              <Link  href=""><MdLeaderboard/> leader board</Link>
                         </div>
+                    {permission ? <Link onClick={()=> setClicked(false)}  href="/profile">Profile</Link> : 
                     <Link onClick={()=> setClicked(false)} href="">SignUp</Link>
+                    }
                     <Link onClick={()=>setClicked(false)} href="">About us</Link>
              </div>
         

@@ -1,8 +1,10 @@
 .top{
     display: flex;
     align-items: center;
-    height: 450px;
+    height: 400px;
     margin: 20px;
+    width: 80%;
+    margin: auto;
     justify-content: space-around;
 }
 

@@ -1,17 +1,17 @@
-import React from 'react'
-import Headers from './Header'
-import Footer from './Footer'
+import styles from './Layout.module.css'
+import Headers from './Header';
+import Footer from './Footer';
 
-function Layout({children}) {
+function Layout({ children }) {
   return (
-    <div>
-        <Headers />
-          <div style={{minHeight:"927px"}}>
-          {children}
-          </div>
+    <div className={styles.whole}>
+      <Headers />
+        <div className={styles.allFather}>
+              {children}
+        </div>
         <Footer />
     </div>
-  )
+  );
 }
 
-export default Layout
+export default Layout;

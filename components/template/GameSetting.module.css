@@ -1,0 +1,94 @@
+.container{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.categoryContainer h3{
+    text-align: center;
+    color: rgb(149, 225, 225);
+    background-color: rgba(127, 255, 212, 0.099);
+    width: 100%;
+}
+.any{
+    color: aquamarine;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px aqua;
+    padding: 5px;
+    width: 120px;
+    text-align: center;
+}
+.categoryContainer{
+    height: 100%;
+    padding-bottom: 23px;
+}
+
+.category{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 100%;
+}
+
+
+.optionsContainer h3{
+    text-align: center;
+    color: rgb(149, 225, 225);
+    background-color: rgba(127, 255, 212, 0.099);
+    width: 100%;
+}
+
+.optionsContainer{
+    height: 100%;
+    padding-bottom: 23px;
+}
+
+.options{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 100%;
+}
+
+
+.buttonsContainer{
+    display: flex;
+    justify-content: space-around;
+}
+
+.buttonsContainer button{
+    padding: 5px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .2s ease;
+    border: none;
+}
+
+.buttonsContainer button:hover{
+    scale: 1.1;
+}
+
+.buttonsContainer button:first-child{
+    box-shadow: 0px 0px 5px chartreuse;
+    background-color: transparent;
+    color: chartreuse;
+}
+.buttonsContainer button:last-child{
+    box-shadow: 0px 0px 5px orange;
+    background-color: transparent;
+    color: orange;
+}
+
+@media screen and (max-width:1000px) {
+    .buttonsContainer{
+        margin: 10px;
+    }
+}
+
+@media screen  and (max-width:300px){
+    .buttonsContainer button{
+        font-size: 10px;
+    }
+}

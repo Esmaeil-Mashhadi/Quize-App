@@ -1,0 +1,9 @@
+.whole{
+flex-grow: 1;
+}
+.allFather{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: calc(100% - 100px);
+}
