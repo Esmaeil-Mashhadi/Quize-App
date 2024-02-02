@@ -7,7 +7,7 @@ function Homepage() {
     <div>
         <div className={styles.top}>
             <div className={styles.topLeft}>
-              <img src='Quize.png' /> 
+              <img src='Quiz.png' /> 
             </div>
             <div className={styles.topRight}>
             Welcome to our exciting quiz website, 

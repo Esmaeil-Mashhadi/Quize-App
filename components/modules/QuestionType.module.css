@@ -6,15 +6,17 @@
 }
 
 .main{
-    color: aquamarine;
-    cursor: pointer;
     border-radius: 5px;
-    box-shadow: 0px 0px 5px aqua;
+    box-shadow: 0px 0px 5px var(--color);
     padding: 5px;
-    width: 120px;
+    width: 140px;
     text-align: center;
+    background-color: var(--background);
     border: none;
-    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }
 
 .types{
@@ -36,6 +38,9 @@
     width: 120px;
     border: none;
     background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 
@@ -46,6 +51,9 @@
     transition: .3s;
 }
 .types button:nth-child(2){
+    transition: .4s;
+}
+.types button:nth-child(3){
     transition: .5s;
 }
 
@@ -65,13 +73,21 @@
         width:95px;
         white-space: nowrap;
     }
+    .main{
+        min-width: 120px;
+        font-size: 11px;
+        padding:7px 0px;
+    }
 }
 
 @media screen and (max-width:300px) {
+    .main{
+        min-width: 90px;
+    }
     .questionType button{
         width:68px;
         font-size: 9px;
-
+        
     }
 
 }

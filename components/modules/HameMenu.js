@@ -36,9 +36,9 @@ import { IoMdArrowDropright } from "react-icons/io";
          </div>
         
             <div style={transform} className={styles.mobileMenu}>
-                    <Link className={styles.quizeLink} href="">Quize <IoMdArrowDropright/> </Link>
+                    <Link className={styles.quizeLink} href="">quiz <IoMdArrowDropright/> </Link>
                         <div className={styles.quizeSublinks}>
-                             <Link href=""> <PiExamFill/> start quize</Link>
+                             <Link href=""> <PiExamFill/> start quiz</Link>
                              <Link  href=""><IoSettings/> settings</Link>
                              <Link  href=""><MdLeaderboard/> leader board</Link>
                         </div>

@@ -1,16 +1,26 @@
-import Link from 'next/link';
+import { FaCheckCircle } from 'react-icons/fa';
 import styles from './Science.module.css'
+import { userChoice } from '@/utils/userOptionChoice';
+import { Fragment } from 'react';
 
-const Science = ({handleMouseLeave , handleMouseEnter , style , name , originalStyle , categoryHandler}) => {
+const Science = ({handleMouseLeave , handleMouseEnter , style , name , originalStyle ,category , categoryHandler,  selectedStyle ,notSelectedStyle }) => {
 
+    const categoryCodes = {
+        Nature :"17" , Computer :"18" , Mathematic: "19" ,
+        Gadget:"30"}
+
+    const selected = userChoice(category , categoryCodes)
     return (
             <div onMouseLeave={handleMouseLeave} className={styles.scienceContainer}>
-                <button data-name ="Science" onMouseEnter={handleMouseEnter} className={styles.mainScience} >Science</button>
+            
+                <button data-name ="Science" style={!selected ? notSelectedStyle : selectedStyle}
+                 onMouseEnter={handleMouseEnter} className={styles.mainScience}>{selected ? <Fragment>{selected}<FaCheckCircle/></Fragment> :"Science"}
+                 </button>
+
                 <div onMouseLeave={handleMouseLeave} style={name == "Science" ? style : originalStyle} className={styles.subCategories}>
-                     <button onClick={()=>categoryHandler('17')}  >Nature</button>
-                     <button onClick={()=>categoryHandler('18')}  >Computer</button>
-                     <button onClick={()=>categoryHandler('19')}  >Mathematic</button>
-                     <button onClick={()=>categoryHandler('30')} >Gadget</button>
+                        {Object.entries(categoryCodes).map(([name , code])=>(
+                            <button onClick={()=>categoryHandler({[name]: code})}>{code == category[name] ? <Fragment>{name} <FaCheckCircle/></Fragment> :name}</button>
+                            ))}
                  </div>
             </div>
     );

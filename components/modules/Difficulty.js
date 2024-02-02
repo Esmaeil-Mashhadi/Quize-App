@@ -1,19 +1,25 @@
-import Link from 'next/link';
 import styles from './Difficulty.module.css'
 import { changeDifficulty } from '@/utils/reducers';
+import { Fragment } from 'react';
+import { FaCheckCircle } from 'react-icons/fa';
+import { userChoice } from '@/utils/userOptionChoice';
 
-const Difficulty = ({handleMouseLeave , handleMouseEnter , style , name , originalStyle , dispatch}) => {
-    const difficultyHandler = (diff , e)=>{
-        e.preventDefault()
+const Difficulty = ({handleMouseLeave , handleMouseEnter , style , name , originalStyle , dispatch ,selectedStyle , notSelectedStyle , difficulty}) => {
+
+    const difficultyHandler = (diff)=>{
         dispatch(changeDifficulty(diff))
     }
+
+    const diffList = {any:"" , easy :"easy"  , medium : "medium" , hard :"hard"}
+    
+    const selected = userChoice(difficulty , diffList) || "any"
     return (
         <div onMouseLeave={handleMouseLeave} className={styles.difficulty}>
-            <button onClick={(e)=>difficultyHandler("any" , e)} data-name = "Difficulty" onMouseEnter={handleMouseEnter} className={styles.main} >any difficulty</button>
+            <button style={!selected ? notSelectedStyle : selectedStyle} data-name = "Difficulty" onMouseEnter={handleMouseEnter} className={styles.main} > difficulty : {selected}</button>
             <div onMouseLeave={handleMouseLeave} style={name == "Difficulty" ? style : originalStyle}  className={styles.diffs}>
-                <button onClick={()=>difficultyHandler('easy')} >Easy</button>
-                <button onClick={()=>difficultyHandler('medium')} >Medium</button>
-                <button onClick={()=>difficultyHandler('hard')} >Hard</button>
+                {Object.entries(diffList).map(([diff , code]) => (
+                    <button onClick={()=>difficultyHandler({[diff] : code})}>{diff == selected ? <Fragment> {diff} <FaCheckCircle/></Fragment> : diff}</button>
+                ))}
             </div>
        </div>
     );

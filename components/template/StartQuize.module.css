@@ -1,0 +1,145 @@
+.container{
+    height: 100%;
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    position: relative;
+}
+
+.loading{
+    margin: auto;
+    width: fit-content;
+}
+
+.questionContainer{
+    border-radius: 5px;
+    padding: 5px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.question{
+    border: solid;
+    border-color: rgba(126, 210, 237, 0.605);
+    border-radius: 5px;
+    padding: 10px;
+    height: 200px;
+    min-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 30px;
+    background: linear-gradient(45deg , rgba(0, 0, 0, 0.182) ,
+     rgba(0, 255, 255, 0.104) , rgba(0, 0, 0, 0.182))
+}
+
+
+.buttonContainer{
+    display: flex;
+    width: 30%;
+    justify-content: space-between;
+}
+
+.buttonContainer button{
+    width: 70px;
+    height: 70px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+.buttonContainer button:last-child{
+    position: absolute;
+    right: 10%;
+    bottom: 50%;
+}
+
+.buttonContainer button:hover{
+    scale: 1.1;
+}
+
+.buttonContainer button:active{
+    scale: 1;
+}
+
+.buttonContainer button:first-child{
+    transform: scale(-1);
+    filter: invert(100%);
+    position: absolute;
+    left: 10%;
+    bottom: 50%;
+}
+
+.finish{
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    background-color: transparent;
+    border: none;
+    width: 60px;
+    cursor: pointer;
+    
+}
+.circle{
+    border: none;
+    border-radius: 50%;
+    background-color: var(--main-background-color);
+    padding: 5px;
+    border-bottom: solid;
+    border-color:  rgba(126, 210, 237, 0.605);
+    transition: .2s ease;
+}
+
+.circle:hover .endQuize{
+    top: 0px;
+    opacity: 1;
+}
+
+.endQuize{
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 10px;
+    white-space: nowrap;
+    top: 30px;
+    opacity: 0;
+    pointer-events: none;
+    transition: .2s ease;
+    color:rgb(255, 217, 127);
+    font-weight: bold;
+}
+
+
+
+
+.finish img{
+    width: 100%;
+}
+
+.buttonContainer button img{
+    width: 100%;
+    user-select: none;
+}
+
+
+.modal {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.645);
+    margin-top: -50px;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -1,10 +1,10 @@
 'use client'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './QuestionNumber.module.css'
-import { changeNumber } from '@/utils/reducers';
+import { changeAmount } from '@/utils/reducers';
 
-const QuestionNumber = ({handleMouseLeave , handleMouseEnter , style , name , originalStyle , dispatch}) => {
-    const [value , setValue] = useState(10)
+const QuestionNumber = ({handleMouseLeave , handleMouseEnter , style , name , originalStyle , dispatch , amount}) => {
+    const [value , setValue] = useState(amount) 
     const [percent , setPercent] = useState(20)
     const changeHandler = (e)=>{
         const newValue = e.target.value
@@ -12,8 +12,13 @@ const QuestionNumber = ({handleMouseLeave , handleMouseEnter , style , name , or
         setPercent(newValue*2)
     }
 
+    useEffect(()=>{
+            setValue(amount)
+            setPercent(amount*2)
+    },[amount]) 
+    
     const handleNumber = ()=>{
-        dispatch(changeNumber(value))
+        dispatch(changeAmount(value))
     }
     const progressStyle = {
         '--progress' : `${percent}%`

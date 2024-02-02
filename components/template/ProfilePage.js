@@ -9,9 +9,10 @@ import GameSetting from './GameSetting';
 
 
 
-function ProfilePage({user}) {
+function ProfilePage({user , quizOptions}) {
     const [leftClick , setLeftClick] = useState(false)
     const [rightClick , setRightClick] = useState(false)
+
 
     const fadeRight = {
         'width' : leftClick && "0px",
@@ -57,7 +58,7 @@ function ProfilePage({user}) {
                     </button>
                 </div>
                 <div style={gameSettingStyle} className={styles.gameSetting}>
-                    <GameSetting/>
+                    <GameSetting quizOptions = {quizOptions} user = {user}/>
                 </div>
             </div>
     </div>

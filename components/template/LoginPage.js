@@ -58,7 +58,7 @@ function Login() {
 
                 <div className={styles.already}>
                     <p>don't have an acount ?</p>
-                    <Link href="/signup">Login</Link>
+                    <Link href="/signup">Sign up</Link>
                 </div>
 
                 <button onClick={sendHandler}

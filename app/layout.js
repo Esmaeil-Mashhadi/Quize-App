@@ -6,8 +6,8 @@ import ReduxProvider from "@/utils/ReduxProvider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "quize",
-  description: "quize website",
+  title: "quiz",
+  description: "quiz website",
 };
 
 export default function RootLayout({ children }) {
@@ -17,10 +17,8 @@ export default function RootLayout({ children }) {
        <ReduxProvider>
            <Layout>
                {children}
-         </Layout>
+          </Layout>
        </ReduxProvider>
-   
-
 
        </body>
     </html>

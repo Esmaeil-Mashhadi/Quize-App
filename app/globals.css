@@ -1,5 +1,9 @@
+:root {
+  --main-background-color: rgb(1, 16, 29);
+}
+
 body{
-  background-color: rgb(1, 16, 29);
+  background-color: var(--main-background-color);
   max-width: 1920px;
   margin: auto;
   overflow-x: hidden;

@@ -1,8 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit"
-import quizeReducer from "./reducers"
+import { fetchReducer, quizeReducer } from "./reducers"
 
 const store = configureStore({
-    reducer : quizeReducer
+    reducer : {
+       quizeStore : quizeReducer ,
+       fetchStore : fetchReducer,
+    }
 })
 
 

@@ -38,11 +38,11 @@ async function Headers() {
 
            <div className={styles.quizeContainer}>
            <Link  href=""  className={styles.mainLink}>
-                Quize
+                quiz
            </Link>
 
            <div className={styles.subLinks}>
-                <Link href="/quize"> <PiExamFill/> start quize</Link>
+                <Link href="/quiz"> <PiExamFill/> start quiz</Link>
                 <Link  href=""><IoSettings/> my Score </Link>
                 <Link  href="/leaderboard"><MdLeaderboard/> leader board</Link>
            </div>
@@ -54,7 +54,7 @@ async function Headers() {
           </div>
 
         <div className={styles.rightSide}>
-          <FaPersonThroughWindow/> Esi Quize 
+          <FaPersonThroughWindow/> Esi quiz 
        </div>
     </div>
   )

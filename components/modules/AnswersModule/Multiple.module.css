@@ -1,0 +1,87 @@
+.container{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+
+.circle{
+    width: 65px;
+    height: 65px;
+    background-color: var(--main-background-color);
+    border-radius: 50%;
+    padding: 7px;
+    position: absolute;
+    bottom: 50%;
+    transform: translateY(50%);
+    z-index: 2;
+}
+
+.subCircle{
+    border: solid;
+    border-color: aqua;
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+}
+
+
+.circle img{
+    width: 100%;
+}
+
+.buttonContainer{
+    display: grid;
+    grid-template-columns:repeat(2, 1fr);
+    grid-template-rows: repeat(2 ,1fr);
+}
+
+.buttonContainer button{   
+    padding: 12px;
+    border-radius: 5px; 
+    border: none;
+    margin: 3px;
+    width: 200px;
+    height: 60px;
+    display: flex;
+    align-items: center;   
+    transition: .2s ease;
+}
+
+.buttonContainer button:hover{
+    scale: .95;
+    cursor: pointer;
+    box-shadow: 0px 0px 10px white;
+}
+
+.buttonContainer button:active{
+    scale: .9;
+}
+
+.buttonContainer button:first-child{
+    color: black;
+    font-weight: bold;
+    text-align: left;
+}
+
+.buttonContainer button:nth-child(3){
+    color: black;
+    text-align: left;
+    font-weight: bold;
+}
+
+.buttonContainer button:nth-child(2){
+
+    font-weight: bold;
+    color: black;
+    text-align: right;
+    justify-content: flex-end;
+}
+.buttonContainer button:nth-child(4){
+    font-weight: bold;
+    color: black;
+    text-align: right;
+    justify-content: flex-end;
+}
