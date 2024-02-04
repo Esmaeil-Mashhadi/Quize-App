@@ -1,6 +1,6 @@
 export const requestUrlHandler = (quizOptions)=>{
     let URL = process.env.BASE_URL
-    const {category , difficulty , amount , type} = quizOptions
+    const {category , difficulty , amount , type} = quizOptions  
     if(amount){
         URL+=`?amount=${amount}`
        }else{

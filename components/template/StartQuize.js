@@ -18,10 +18,16 @@ const StartQuize = () => {
     const type = result[index]?.type
 
     useEffect(()=>{
-        
+            const getUserPrevChoice = async()=>{
+                const res = await fetch("/api/quiz/saveScore")
+                const {prevChoice} = await res.json()
+                if(prevChoice[index]){
+                    setUserChoice(prevChoice[index])
+                }
+            }
+            getUserPrevChoice()
     },[index])
 
-    
     useEffect(()=>{
         const getQuizeFromDataBase = async()=>{
             const res = await fetch('/api/quiz/currentQuiz')
@@ -30,7 +36,6 @@ const StartQuize = () => {
         }
         getQuizeFromDataBase()
     },[])
-
 
     const nextHandler = ()=>{
         setUserChoice({})
@@ -76,7 +81,6 @@ const StartQuize = () => {
                        {type =="multiple" && <Multiple dataStorage = {dataStorage}  userChoice= {userChoice} 
                        setUserChoice ={setUserChoice}  
                         questionIndex = {index} />}
-
                     </div>
                 </div>
                 <div className={styles.buttonContainer}>

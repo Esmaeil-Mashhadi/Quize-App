@@ -1,0 +1,26 @@
+.conicContainer{
+    background: conic-gradient(green var(--deg), rgba(233, 233, 213, 0.542) 5deg);
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .2s ease;
+}
+
+
+
+.conicContainer::before{
+    content: "";
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    background-color: rgb(1, 30, 30);
+    border-radius: 50%;    
+}
+
+.conicContainer p{
+    z-index: 2;
+}

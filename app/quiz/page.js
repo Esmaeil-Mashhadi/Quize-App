@@ -12,6 +12,7 @@ async function quiz() {
   const quizOptions = await quizModel.findOne({user : user?.email})
   const requestUrl = requestUrlHandler(quizOptions)
 
+
   return (
     <QuizePage  requestUrl = {requestUrl} quizOption = {JSON.parse(JSON.stringify(quizOptions))}/>
   )

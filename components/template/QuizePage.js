@@ -10,7 +10,6 @@ import toast, { Toaster } from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
 
 
-
 function QuizePage({quizOption , requestUrl}) {
     const {category , difficulty , type , amount} = quizOption
     const {result :{data}}  = useSelector(states => states.fetchStore)
@@ -18,24 +17,32 @@ function QuizePage({quizOption , requestUrl}) {
     const dispatch = useDispatch()
 
    const router = useRouter()
+
     const saveCurrentQuize = async()=>{
-      const res = await fetch('/api/quiz/currentQuiz' , {
-          method:"POST"  , body :JSON.stringify(data) , headers :{"Content-Type" : "application/json"} ,
-           credentials:"include"
-      })
-      const response = await res.json()
-      console.log(response);
-      if(response.status !=="success"){
-          toast.error('something went wrong try again')
-          setTimeout(() => {
-              router.push('/quiz')
-          }, 2000);
-      }
+        try {  
+            const res = await fetch('/api/quiz/currentQuiz' , {
+                method:"POST"  , body :JSON.stringify(data) , headers :{"Content-Type" : "application/json"} ,
+                 credentials:"include"
+            })
+            
+            const response = await res.json()
+            console.log(response);
+            if(response.status != "success"){
+                toast.error('something went wrong try again')
+                setTimeout(() => {
+                    router.push('/quiz')
+                }, 2000);
+            }else{
+                router.push("/quiz/start")
+            }
+
+        } catch (error) {
+            toast.error(error.message)
+            router.push("/quiz")
+        }
+  
      }
 
-     // quize sending url is random for preventing questions to be changed after reload 
-     // we saved our current quize on data base to keep it and generating new question 
-     // only happens when user click Start the quize 
     const startHandler = ()=>{
          localStorage.clear()
         dispatch(fetchQuiz(requestUrl))
@@ -51,7 +58,7 @@ function QuizePage({quizOption , requestUrl}) {
             <p>Number of questions : <span>{amount}</span></p>
         </div>
         <div className={styles.right}>
-              <Link onClick={startHandler} href="/quiz/start">Start quiz <PiArrowFatLineRightFill/></Link>
+              <Link onClick={startHandler} href="">Start quiz <PiArrowFatLineRightFill/></Link>
               <Link href="/profile">Change setting <MdSettings/></Link>
         </div>
         <Toaster />

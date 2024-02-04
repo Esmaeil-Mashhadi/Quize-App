@@ -30,7 +30,6 @@ export async function POST(req){
             dataCopy[index].allAnswers = allAnswers
             dataCopy[index].correctIndex = correctIndex
          })
-
          const currentQuize = await userModel.updateOne({email} , {$set : {currentQuize : dataCopy}}, {upsert:true})
         if(!currentQuize.modifiedCount) return NextResponse.json({error:"something went wrong"} ,{status:500})
         return NextResponse.json({status:"success"} , {status:200})

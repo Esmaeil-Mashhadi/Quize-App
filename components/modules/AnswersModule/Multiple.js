@@ -1,5 +1,6 @@
 import toast, { Toaster } from 'react-hot-toast'
 import styles from './Multiple.module.css'
+import { saveScore } from '@/utils/saveScoreToBackend'
 
 function Multiple({dataStorage , setUserChoice , userChoice , questionIndex}) {
 
@@ -9,24 +10,23 @@ function Multiple({dataStorage , setUserChoice , userChoice , questionIndex}) {
     '--right' :"green"
    }
 
+
    const answerHandler = async(index)=>{
       if(index == correctIndex){
+          setUserChoice({[index] :"correct"})
           const score = 10
-        const res = await fetch('/api/quiz/saveScore' , {
-          method:"POST" , body:JSON.stringify({score , category : dataStorage[questionIndex]?.category ,
-             totalQuestions : dataStorage?.length})
-        })
-         const result = await res.json()
+          const result = await saveScore(dataStorage , questionIndex , index , score)
         if(result.status !="success"){
             toast.error("something went wrong")
-        }else{
-          setUserChoice({[index]: "correct"})
         }
       }else{
+        const result = await saveScore(dataStorage , questionIndex , index , 0 , correctIndex)
+        if(result.status !="success"){
+          toast.error("something went wrong")
+      }
         setUserChoice({[index] : "wrong" , [correctIndex] : "correct"})
       }
    }
-
 
   return (
     <div className={styles.container}>
