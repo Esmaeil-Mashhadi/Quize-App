@@ -1,5 +1,5 @@
 import userModel from "@/model/usermodel"
-import connectDB from "./connectionToDB"
+import connectDB from "../connectionToDB"
 
 const { decode } = require("jsonwebtoken")
 

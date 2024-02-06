@@ -1,5 +1,5 @@
 import Signup from '@/components/template/Signup'
-import checkUserPermission from '@/utils/checkUserPermission'
+import checkUserPermission from '@/utils/collectionCheck/checkUserPermission'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 import React from 'react'

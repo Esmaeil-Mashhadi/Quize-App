@@ -1,6 +1,6 @@
 import ProfilePage from "@/components/template/ProfilePage"
 import quizModel from "@/model/quizModel";
-import checkUserPermission from "@/utils/checkUserPermission"
+import checkUserPermission from "@/utils/collectionCheck/checkUserPermission"
 import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
 

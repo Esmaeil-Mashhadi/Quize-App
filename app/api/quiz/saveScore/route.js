@@ -1,5 +1,5 @@
 import userModel from "@/model/usermodel";
-import { checkUserExistence } from "@/utils/checkUserExistence";
+import { checkUserExistence } from "@/utils/collectionCheck/checkUserExistence";
 import connectDB from "@/utils/connectionToDB";
 import { NextResponse } from "next/server";
 
@@ -8,9 +8,22 @@ export async function POST(req){
         await connectDB()
         const email = await checkUserExistence(req)
         const {score , category , totalQuestions , prevChoice} = await req.json()
-        const checkCategoryExistence = await userModel.findOne({'currentScore.category' : category})
-        if(checkCategoryExistence){
-
+        const checkCurrentCategoryExistence = await userModel.findOne({'currentScore.category' : category})
+        const checkUserCategoryExistence = await userModel.findOne({"userScore.category" : category})
+        if(checkUserCategoryExistence){
+            const updateCategory = await userModel.updateOne({$and:[{email , "userScore.category" :category}]}, {$inc:{
+                'userScore.$.score': score
+            }})
+            if(!updateCategory.modifiedCount){
+                return NextResponse.json({error:"failed to update socre"} , {status:500})
+            }
+        }else{
+            const pushCategory = await userModel.updateOne({email} , {$push:{userScore:{score , category , totalQuestions}}} , {upsert:true})
+            if(!pushCategory.modifiedCount){
+                return NextResponse.json({error:"failed to save socre"} , {status:500})
+            }
+        }
+        if(checkCurrentCategoryExistence){
             const savedScore = await userModel.updateOne({$and :[{email , 'currentScore.category' : category}]} ,
              {$set :{'currentScore.$.category' : category , 'currentScore.$.totalQuestions' : totalQuestions } ,
               $push:{prevChoice : prevChoice},

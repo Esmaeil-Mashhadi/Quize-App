@@ -1,5 +1,5 @@
 import userModel from "@/model/usermodel";
-import { checkUserExistence } from "@/utils/checkUserExistence";
+import { checkUserExistence } from "@/utils/collectionCheck/checkUserExistence";
 import connectDB from "@/utils/connectionToDB";
 import { NextResponse } from "next/server";
 
@@ -30,7 +30,8 @@ export async function POST(req){
             dataCopy[index].allAnswers = allAnswers
             dataCopy[index].correctIndex = correctIndex
          })
-         const currentQuize = await userModel.updateOne({email} , {$set : {currentQuize : dataCopy}}, {upsert:true})
+         const initialScore = {totalQuestions : dataCopy?.length , score:0 , category:dataCopy[0]?.category}
+         const currentQuize = await userModel.updateOne({email} , {$set : {currentQuize : dataCopy , currentScore:initialScore }}, {upsert:true})
         if(!currentQuize.modifiedCount) return NextResponse.json({error:"something went wrong"} ,{status:500})
         return NextResponse.json({status:"success"} , {status:200})
     } catch (error) {
@@ -38,7 +39,6 @@ export async function POST(req){
     }
 
 }
-
 
 
 export async function GET(req){

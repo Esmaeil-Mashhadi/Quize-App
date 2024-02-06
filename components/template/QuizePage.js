@@ -8,11 +8,14 @@ import { useDispatch } from 'react-redux';
 import { fetchQuiz } from '@/utils/reducers';
 import toast, { Toaster } from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
+import { DNA } from 'react-loader-spinner';
 
 
 function QuizePage({quizOption , requestUrl}) {
     const {category , difficulty , type , amount} = quizOption
-    const {result :{data}}  = useSelector(states => states.fetchStore)
+    const {result :{data , isLoading , Error }}  = useSelector(states => states.fetchStore)
+
 
     const dispatch = useDispatch()
 
@@ -20,35 +23,34 @@ function QuizePage({quizOption , requestUrl}) {
 
     const saveCurrentQuize = async()=>{
         try {  
-            const res = await fetch('/api/quiz/currentQuiz' , {
-                method:"POST"  , body :JSON.stringify(data) , headers :{"Content-Type" : "application/json"} ,
-                 credentials:"include"
-            })
-            
-            const response = await res.json()
-            console.log(response);
-            if(response.status != "success"){
-                toast.error('something went wrong try again')
-                setTimeout(() => {
-                    router.push('/quiz')
-                }, 2000);
-            }else{
-                router.push("/quiz/start")
-            }
-
+                const res = await fetch('/api/quiz/currentQuiz' , {
+                    method:"POST"  , body :JSON.stringify(data) , headers :{"Content-Type" : "application/json"} ,
+                     credentials:"include"
+                })
+                const response = await res.json()
+                if(response.status != "success" && !data?.length){
+                    toast.error('too many request , try again later')
+                    setTimeout(() => {
+                        router.push('/quiz')
+                    }, 2000);
+                }else{
+                    router.push("/quiz/start")
+                }
         } catch (error) {
             toast.error(error.message)
             router.push("/quiz")
         }
-  
      }
 
-    const startHandler = ()=>{
-         localStorage.clear()
-        dispatch(fetchQuiz(requestUrl))
-        saveCurrentQuize()
+    const startHandler = async()=>{
+          await saveCurrentQuize()    
     }
 
+    useEffect(()=>{
+        dispatch(fetchQuiz(requestUrl))
+    },[])
+    
+  if(isLoading) return <DNA width="100%" />
   return (
     <div className={styles.container}>
         <div className={styles.left}>

@@ -30,7 +30,7 @@ const quizeSlicer = createSlice({
            return state = {
                 difficulty:"" , type:"" , amount:"10" , category:""
             }
-        } ,
+        },
         getOptions :(state , action)=>{
             return state = {
                 ...action.payload
@@ -70,7 +70,11 @@ export const fetchQuiz = createAsyncThunk('fetchData' , async(requestUrl)=>{
         .addCase(fetchQuiz.rejected , (state , action)=>{
             state.result.data = {}
             state.result.isLoading = false
-            state.result.Error = action.error.message
+            if(action?.payload.response_code ==5){
+                state.result.Error == "Too many request, wait and try again later"
+            }else{
+                state.result.Error = action.error.message
+            }
         })
     }
 })

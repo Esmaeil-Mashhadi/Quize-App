@@ -1,5 +1,5 @@
 import userModel from "@/model/usermodel";
-import { checkUserExistence } from "@/utils/checkUserExistence";
+import { checkUserExistence } from "@/utils/collectionCheck/checkUserExistence";
 import connectDB from "@/utils/connectionToDB";
 import { NextResponse } from "next/server";
 

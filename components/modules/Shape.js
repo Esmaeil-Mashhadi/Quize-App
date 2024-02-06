@@ -2,17 +2,20 @@ import { useEffect, useState } from 'react'
 import styles from './Shape.module.css'
 
 function Shape({userScore}) {
-
+    
+    const correctAnswer = userScore?.correctAnswers 
+    const totalQuestions =userScore?.totalQuestions
+  
     const [number , setNumber] = useState(0)
     const [acc , setAcc] = useState(0)
-    const accuracy = `${(userScore.correctAnswers / userScore.totalQuestions)*100}%`
+    const accuracy = `${(correctAnswer /totalQuestions )*100}%`
     const degree = parseFloat(accuracy)/100 * 360 
-    const ratio = Math.ceil(degree/acc)
 
-    
     const accStyle = {
         '--deg' : `${number}deg`
     }
+
+
 
     useEffect(()=>{
         const fillTheCircle = setInterval(() => {
@@ -20,14 +23,9 @@ function Shape({userScore}) {
                 return prev + 1
             })
         }, 3);    
-
-
         if (degree <= number) {
             clearInterval(fillTheCircle)
           }
-
-      
-    
           return () => {
             clearInterval(fillTheCircle)
           }

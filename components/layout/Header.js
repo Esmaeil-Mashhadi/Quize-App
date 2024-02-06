@@ -5,7 +5,7 @@ import { PiExamFill } from "react-icons/pi";
 import { IoSettings } from "react-icons/io5";
 import { MdLeaderboard } from "react-icons/md";
 import HameMenu from '../modules/HameMenu';
-import checkUserPermission from '@/utils/checkUserPermission';
+import checkUserPermission from '@/utils/collectionCheck/checkUserPermission';
 import { cookies } from 'next/headers';
 
 
