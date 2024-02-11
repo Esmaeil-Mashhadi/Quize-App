@@ -1,0 +1,59 @@
+.container{
+    display: flex;
+    gap: 50px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.scoreContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: rgba(222, 236, 231, 0.237);
+    border-radius: 5px;
+    color: black;
+    padding: 10px;
+    letter-spacing: .5px;
+}
+
+.scoreContainer h4{
+    width: fit-content;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+.scoreContainer p{
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+.scoreContainer svg{
+    scale: 1.2;
+}
+
+.conicContainer{
+    background: conic-gradient(green var(--deg), rgba(233, 233, 213, 0.542) 5deg);
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .2s ease;
+}
+
+.conicContainer::before{
+    content: "";
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    background-color: rgb(1, 30, 30);
+    border-radius: 50%;    
+}
+
+.conicContainer p{
+    z-index: 2;
+}

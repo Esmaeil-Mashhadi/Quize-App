@@ -11,14 +11,15 @@ const checkUserPermission = async(cookie)=>{
    if(!email , !exp) return false
 
  await connectDB()
- const user = await userModel.findOne({email})
- if(!user) return false
+ const data = await userModel.findOne({email} , {email : 1 , username : 1 , userScore : 1 , _id: 0})
+ const user = JSON.parse(JSON.stringify(data))
+ if(!user) return false 
 
  if(Date.now > (exp*1000)){
     return false
  }
- 
- return {user:{email :user?.email , username: user?.username} , status:"authenticated"}
+
+ return {user:{email :user?.email  , username: user?.username , userScore: user.userScore  } , status:"authenticated"}
 }
 
 export default checkUserPermission

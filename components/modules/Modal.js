@@ -20,7 +20,6 @@ function Modal({setShowModal}) {
                 method:"PATCH" , body :JSON.stringify({category :userScore?.category , totalQuestions : userScore?.totalQuestions}) , headers:{'Content-Type' :"application/json"}
         })
         const result = await res.json()
-        console.log(result);
         if(result.status == 'success'){
                 toast.success(result.message)
                   router.push('/quiz')

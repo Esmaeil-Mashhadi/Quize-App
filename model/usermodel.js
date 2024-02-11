@@ -4,7 +4,8 @@ const { default: mongoose, model, models } = require("mongoose");
 
 const scoreSchema = new mongoose.Schema({
     category: {type:String , required:true},
-    score : {type:Number ,  default : 0  , required:true} , 
+    score : {type:Number ,  default : 0  , required:true} ,
+    totalCorrectAnswers :{type:Number , default:0 , required:true},
     totalQuestions : {type :Number , required:true},
 })
 

@@ -13,6 +13,7 @@ const StartQuize = () => {
    const [showModal , setShowModal] = useState(false)
    const [dataStorage , setDataStorage] = useState([])
 
+
     const result = dataStorage || []
     const question = result[index]?.question
     const type = result[index]?.type
@@ -79,7 +80,7 @@ const StartQuize = () => {
                     <div className={styles.answers}>
                        {type =="boolean" && <BooleanAnswer />}
                        {type =="multiple" && <Multiple dataStorage = {dataStorage}  userChoice= {userChoice} 
-                       setUserChoice ={setUserChoice}  
+                       setUserChoice ={setUserChoice}
                         questionIndex = {index} />}
                     </div>
                 </div>

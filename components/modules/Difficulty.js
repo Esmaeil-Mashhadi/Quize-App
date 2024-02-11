@@ -18,7 +18,10 @@ const Difficulty = ({handleMouseLeave , handleMouseEnter , style , name , origin
             <button style={!selected ? notSelectedStyle : selectedStyle} data-name = "Difficulty" onMouseEnter={handleMouseEnter} className={styles.main} > difficulty : {selected}</button>
             <div onMouseLeave={handleMouseLeave} style={name == "Difficulty" ? style : originalStyle}  className={styles.diffs}>
                 {Object.entries(diffList).map(([diff , code]) => (
-                    <button onClick={()=>difficultyHandler({[diff] : code})}>{diff == selected ? <Fragment> {diff} <FaCheckCircle/></Fragment> : diff}</button>
+                    <button key={code} title={diff == "easy" ? "10 points" : diff == "medium" ? "15 points" : diff == "hard" ? "20 points" : null}
+                         onClick={()=>difficultyHandler({[diff] : code})}>
+                         {diff == selected ? <Fragment> {diff} <FaCheckCircle/></Fragment> : diff}
+                    </button>
                 ))}
             </div>
        </div>

@@ -4,7 +4,6 @@ import checkUserPermission from '@/utils/collectionCheck/checkUserPermission'
 import connectDB from '@/utils/connectionToDB'
 import { requestUrlHandler } from '@/utils/requestUrlHandler'
 import { cookies } from 'next/headers'
-import React from 'react'
 
 async function page() {
   await connectDB()

@@ -36,7 +36,6 @@ function ProfilePage({user , quizOptions}) {
 
   return (
     <div className={styles.container}>
-
             <div style={fadeLeft} className={styles.left}>
                 <div className={leftClick ? styles.newHeader : styles.header}>
                      <p>dashboard setting</p>
@@ -45,7 +44,7 @@ function ProfilePage({user , quizOptions}) {
                     </button>
                 </div>
                 <div style={dashSettingStyle} className={styles.dashSetting}>
-                    <DashSetting user = {user}/>
+                    <DashSetting user = {user} />
                 </div>
             </div>
 

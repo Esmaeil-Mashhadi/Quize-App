@@ -70,11 +70,7 @@ export const fetchQuiz = createAsyncThunk('fetchData' , async(requestUrl)=>{
         .addCase(fetchQuiz.rejected , (state , action)=>{
             state.result.data = {}
             state.result.isLoading = false
-            if(action?.payload.response_code ==5){
-                state.result.Error == "Too many request, wait and try again later"
-            }else{
-                state.result.Error = action.error.message
-            }
+             state.result.Error = action.error.message
         })
     }
 })

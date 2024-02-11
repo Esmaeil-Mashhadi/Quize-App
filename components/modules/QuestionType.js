@@ -15,7 +15,7 @@ const QuestionType = ({handleMouseLeave , handleMouseEnter , style , name , orig
             <button style={!selected ? notSelectedStyle : selectedStyle}  data-name="QuestionType" onMouseEnter={handleMouseEnter} className={styles.main}> type : {selected}</button>
             <div onMouseLeave={handleMouseLeave} style={name == "QuestionType" ? style : originalStyle} className={styles.types}>
                     {Object.entries(types).map(([type, code]) => (
-                        <button onClick={()=>typeHandler({[type] : code})}>{type == selected ? <Fragment>{type} <FaCheckCircle/></Fragment> : type}</button>
+                        <button key={code} onClick={()=>typeHandler({[type] : code})}>{type == selected ? <Fragment>{type} <FaCheckCircle/></Fragment> : type}</button>
                     ))}
             </div>
         </div>

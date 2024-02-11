@@ -3,6 +3,7 @@ import styles from "./DashSetting.module.css"
 import { FaUserGraduate } from "react-icons/fa";
 import { MdMarkEmailRead } from "react-icons/md";
 import { LiaEditSolid } from "react-icons/lia";
+import { GrScorecard } from "react-icons/gr";
 import { MdOutlineCloudDone } from "react-icons/md";
 import { HiLogout } from "react-icons/hi";
 
@@ -11,7 +12,8 @@ import { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
-
+import Shape from "../modules/Shape";
+import TotalShape from "../modules/TotalShap";
 
 function DashSetting({user}) {
 
@@ -20,6 +22,7 @@ function DashSetting({user}) {
   const [data , setData] = useState({
     username: ""
   })
+
   const changeHandler = (e)=>{
     setData({username : e.target.value})
   }
@@ -48,7 +51,6 @@ function DashSetting({user}) {
 
   }
 
-
   useEffect(()=>{
     window.addEventListener("click" , (e)=>{
       if(!e.target.closest(`.${styles.username}`)){
@@ -73,15 +75,15 @@ function DashSetting({user}) {
           <button onClick={submitChange}> submit change</button> 
           :<button onClick={()=>setIsEdit(true)}> Chage username</button>
            }
-
+        </div>
+        <div>
+          <p> <GrScorecard/> total score : <span>234</span></p>
         </div>
 
     </div>
 
       <div className={styles.right}>
-          <div className={styles.score}></div>
-          <div className={styles.subjects}></div>
-          <div className={styles.answers}></div>
+        <TotalShape userScore={user?.userScore} />
       </div>
       <Toaster />
     </div>

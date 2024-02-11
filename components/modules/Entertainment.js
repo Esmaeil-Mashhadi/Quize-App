@@ -17,7 +17,7 @@ const Entertainment = ({handleMouseLeave , handleMouseEnter , style , name , ori
          </button>
            <div onMouseLeave={handleMouseLeave} style={name == "Entertainment" ? style : originalStyle} className={styles.subEntertainment}>
                     {Object.entries(categoryCodes).map(([name , code])=>(
-                        <button onClick={()=>categoryHandler({[name]:code})}>{code == category[name] ? <Fragment>{name} <FaCheckCircle/></Fragment> :name}</button>
+                        <button key={code} onClick={()=>categoryHandler({[name]:code})}>{code == category[name] ? <Fragment>{name} <FaCheckCircle/></Fragment> :name}</button>
                     ))}
            </div>
        </div>

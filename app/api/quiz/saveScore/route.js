@@ -12,22 +12,22 @@ export async function POST(req){
         const checkUserCategoryExistence = await userModel.findOne({"userScore.category" : category})
         if(checkUserCategoryExistence){
             const updateCategory = await userModel.updateOne({$and:[{email , "userScore.category" :category}]}, {$inc:{
-                'userScore.$.score': score
+                'userScore.$.score': score , 'userScore.$.totalCorrectAnswers': score ? 1 : 0
             }})
             if(!updateCategory.modifiedCount){
                 return NextResponse.json({error:"failed to update socre"} , {status:500})
             }
         }else{
-            const pushCategory = await userModel.updateOne({email} , {$push:{userScore:{score , category , totalQuestions}}} , {upsert:true})
+            const pushCategory = await userModel.updateOne({email} , {$push:{userScore:{score , category , totalQuestions , totalCorrectAnswers: score? 1 : 0}}} , {upsert:true})
             if(!pushCategory.modifiedCount){
                 return NextResponse.json({error:"failed to save socre"} , {status:500})
             }
         }
         if(checkCurrentCategoryExistence){
             const savedScore = await userModel.updateOne({$and :[{email , 'currentScore.category' : category}]} ,
-             {$set :{'currentScore.$.category' : category , 'currentScore.$.totalQuestions' : totalQuestions } ,
+             {$set :{'currentScore.$.totalQuestions' : totalQuestions } ,
               $push:{prevChoice : prevChoice},
-              $inc:{'currentScore.$.score' :score}})
+              $inc:{'currentScore.$.score' :score }})
 
             if(!savedScore.modifiedCount){
                 return NextResponse.json({error:"something went wrong"} , {status:500})

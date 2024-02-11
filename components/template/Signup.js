@@ -44,6 +44,7 @@ function Signup() {
             method:"POST" , body : JSON.stringify(data) , headers :{"Content-Type" :"application/json"}
         })
         const response = await res.json() 
+        console.log(response)
         if(response.status == "success"){
             toast.success(response.message)
             setTimeout(()=>{

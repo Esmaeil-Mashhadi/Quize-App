@@ -4,17 +4,18 @@ import { saveScore } from '@/utils/saveScoreToBackend'
 
 function Multiple({dataStorage , setUserChoice , userChoice , questionIndex}) {
 
-  const {allAnswers , correctIndex} = dataStorage[questionIndex]
+  const {allAnswers , correctIndex , difficulty} = dataStorage[questionIndex]
    const answerStyles = {
     '--wrong' :"red",
     '--right' :"green"
    }
 
+   const myScore = difficulty == 'easy' ? 10 : difficulty == "medium" ? 15 : difficulty == "hard" ? 20 : null
 
    const answerHandler = async(index)=>{
       if(index == correctIndex){
           setUserChoice({[index] :"correct"})
-          const score = 10
+          const score = myScore
           const result = await saveScore(dataStorage , questionIndex , index , score)
         if(result.status !="success"){
             toast.error("something went wrong")
