@@ -2,17 +2,12 @@
 import styles from "./DashSetting.module.css"
 import { FaUserGraduate } from "react-icons/fa";
 import { MdMarkEmailRead } from "react-icons/md";
-import { LiaEditSolid } from "react-icons/lia";
-import { GrScorecard } from "react-icons/gr";
-import { MdOutlineCloudDone } from "react-icons/md";
 import { HiLogout } from "react-icons/hi";
-
 
 import { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
-import Shape from "../modules/Shape";
 import TotalShape from "../modules/TotalShap";
 
 function DashSetting({user}) {
@@ -29,8 +24,8 @@ function DashSetting({user}) {
 
   const logOutHandler = ()=>{
     Cookies.remove("Authorization")
-    router.push("/")
-    router.refresh()
+    router.refresh() 
+    router.replace("/")
   }
   const submitChange = async()=>{
     if(data.username){
@@ -75,9 +70,6 @@ function DashSetting({user}) {
           <button onClick={submitChange}> submit change</button> 
           :<button onClick={()=>setIsEdit(true)}> Chage username</button>
            }
-        </div>
-        <div>
-          <p> <GrScorecard/> total score : <span>234</span></p>
         </div>
 
     </div>

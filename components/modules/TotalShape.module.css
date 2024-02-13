@@ -1,18 +1,84 @@
 .container{
     display: flex;
-    gap: 50px;
     flex-direction: column;
-    justify-content: center;
+    gap: 30px;
+}
+
+.choose {
+    display: flex;
     align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    position: relative;
+}
+
+.inputList{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+}
+.categoriesList{
+    position:absolute ;
+    top: 45px;
+    background-color: rgba(4, 40, 56, 0.551);
+    width: 100%;
+    list-style: none;
+    border-radius: 5px;
+    padding: 5px;
+    z-index: 2;
+    padding: 15px 3px;
+    max-height: 100px;
+    overflow-y: auto;
+}
+
+.categoriesList::-webkit-scrollbar{
+    background-color: aquamarine;
+    border-radius: 5px;
+}
+
+.categoriesList::-webkit-scrollbar-thumb{
+    background-color: darkcyan;
+    border-radius: 5px;
+}
+.categoriesList li{
+    cursor: pointer;
+    padding: 5px;
+}
+.categoriesList li:hover{
+    background-color:rgba(255, 255, 255, 0.519) ;
+    border-radius: 5px;
+    color:black;
+}
+.choose input{
+    border-radius: 5px;
+    padding: 10px;
+    border: none;
+    background-color: transparent;
+    box-shadow: 0px 0px 2px aqua;
+    outline: none;
+    transition: .2s ease;
+    width: 100%;
+}
+.choose input:focus{
+    box-shadow: 0px 0px 5px aqua;
+}
+
+
+.resultContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 1;
 }
 
 .scoreContainer{
     display: flex;
+    min-width: 300px;
     flex-direction: column;
     gap: 20px;
-    background-color: rgba(222, 236, 231, 0.237);
+    background-color: rgba(222, 236, 231, 0.081);
     border-radius: 5px;
-    color: black;
     padding: 10px;
     letter-spacing: .5px;
 }
@@ -43,6 +109,7 @@
     align-items: center;
     justify-content: center;
     transition: .2s ease;
+    margin: auto;
 }
 
 .conicContainer::before{
