@@ -33,7 +33,6 @@ function ProfilePage({user , quizOptions}) {
         '--pointer': rightClick ? "all" :'none'
     }
 
-
   return (
     <div className={styles.container}>
             <div style={fadeLeft} className={styles.left}>

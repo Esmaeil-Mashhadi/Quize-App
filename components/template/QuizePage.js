@@ -16,7 +16,6 @@ function QuizePage({quizOption , requestUrl}) {
     const {category , difficulty , type , amount} = quizOption
     const {result :{data , isLoading , Error }}  = useSelector(states => states.fetchStore)
 
-
     const dispatch = useDispatch()
 
    const router = useRouter()

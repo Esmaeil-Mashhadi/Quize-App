@@ -1,7 +1,7 @@
 const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
 
 const initialState = {
-    category : {},
+    category : {General :"9"},
     difficulty: "" , 
     type : "" , 
     amount :"10"
@@ -28,7 +28,7 @@ const quizeSlicer = createSlice({
         } ,
         reset :(state , action)=>{
            return state = {
-                difficulty:"" , type:"" , amount:"10" , category:""
+                difficulty:"" , type:"" , amount:"10" , category:{General:"9"}
             }
         },
         getOptions :(state , action)=>{

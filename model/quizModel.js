@@ -2,7 +2,7 @@ import mongoose from "mongoose"
 
 const quizeSchema = new mongoose.Schema({
     user : {type:String , ref:'user'},
-    category : {type:Object , default :{}},
+    category : {type:Object , default :{General:"9"}},
     difficulty: {type:Object , default :{}},
     type:{type:Object , default :{}},
     amount : {type:String , default:"10"},

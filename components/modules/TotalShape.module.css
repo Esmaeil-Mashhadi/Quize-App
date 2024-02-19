@@ -75,6 +75,7 @@
 .scoreContainer{
     display: flex;
     min-width: 300px;
+    max-width: 300px;
     flex-direction: column;
     gap: 20px;
     background-color: rgba(222, 236, 231, 0.081);
@@ -83,17 +84,13 @@
     letter-spacing: .5px;
 }
 
-.scoreContainer h4{
-    width: fit-content;
-    margin: auto;
-    display: flex;
-    align-items: center;
-    gap: 7px;
-}
+
 .scoreContainer p{
     display: flex;
     align-items: center;
     gap: 7px;
+    font-size: 12px;
+    white-space: wrap;
 }
 .scoreContainer svg{
     scale: 1.2;

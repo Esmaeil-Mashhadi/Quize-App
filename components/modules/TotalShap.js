@@ -24,7 +24,7 @@ function TotalShape({userScore}) {
 
    const {category , totalCorrect , totalQuestions , totalScore} = total
     const accuracy = `${Math.round((totalCorrect /totalQuestions )*100)}%`
-    const degree = parseFloat(accuracy)/100 * 360 
+    const degree = parseFloat(accuracy)/100 * 360
 
     const accStyle = {
         '--deg' : `${number}deg`
@@ -45,7 +45,6 @@ function TotalShape({userScore}) {
         setValue(e.target.value)
     }
 
-
     useEffect(()=>{
       if(value == "All"){
         const {totalCorrect , totalQuestions , totalScore} = setTotalForAll(userScore)
@@ -58,10 +57,7 @@ function TotalShape({userScore}) {
             totalQuestions , totalCorrect : totalCorrectAnswers , totalScore : score , category
         })
       }
-      setNumber(degree)
-      setAcc(accuracy)
-    },[value , total])
-
+    },[value])
 
     useEffect(()=>{
       window.addEventListener("click" , (e)=>{
@@ -69,7 +65,9 @@ function TotalShape({userScore}) {
           setShowList(false)
         }
       })
-    },[])
+      setNumber(degree)
+      setAcc(accuracy)
+    },[total])
 
     const regexValue = new RegExp(value == "All" ? "" : value,"gi")
 
@@ -100,9 +98,8 @@ function TotalShape({userScore}) {
             </div>
         }
 
-
         <div className={styles.scoreContainer}>
-          <h4><BiCategoryAlt /> Category : {category}</h4>
+          <p><BiCategoryAlt /> Category : {category}</p>
         
            <p><BsQuestionSquareFill/> total Questions : {totalQuestions}</p>
            <p> <GrScorecard/> total Score : {totalScore}</p>

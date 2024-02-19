@@ -11,7 +11,7 @@ import { useRouter } from 'next/navigation';
 
 function Modal({setShowModal}) {
 
-        const router = useRouter()
+    const router = useRouter()
     const [userScore , setUserScore] = useState(null)
 
     const finishHandler = async()=>{
@@ -22,6 +22,7 @@ function Modal({setShowModal}) {
         const result = await res.json()
         if(result.status == 'success'){
                 toast.success(result.message)
+                router.refresh()
                   router.push('/quiz')
         }else{
                 toast.error("failed to save score")
@@ -37,7 +38,7 @@ function Modal({setShowModal}) {
         }
         getUserResult() 
     },[])
-    
+
 
     if(!userScore) return <DNA />
 

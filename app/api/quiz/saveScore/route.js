@@ -1,6 +1,7 @@
 import userModel from "@/model/usermodel";
 import { checkUserExistence } from "@/utils/collectionCheck/checkUserExistence";
 import connectDB from "@/utils/connectionToDB";
+import { saveScore } from "@/utils/saveScoreToBackend";
 import { NextResponse } from "next/server";
 
 export async function POST(req){
@@ -10,6 +11,7 @@ export async function POST(req){
         const {score , category , totalQuestions , prevChoice} = await req.json()
         const checkCurrentCategoryExistence = await userModel.findOne({'currentScore.category' : category})
         const checkUserCategoryExistence = await userModel.findOne({"userScore.category" : category})
+        
         if(checkUserCategoryExistence){
             const updateCategory = await userModel.updateOne({$and:[{email , "userScore.category" :category}]}, {$inc:{
                 'userScore.$.score': score , 'userScore.$.totalCorrectAnswers': score ? 1 : 0
@@ -27,8 +29,7 @@ export async function POST(req){
             const savedScore = await userModel.updateOne({$and :[{email , 'currentScore.category' : category}]} ,
              {$set :{'currentScore.$.totalQuestions' : totalQuestions } ,
               $push:{prevChoice : prevChoice},
-              $inc:{'currentScore.$.score' :score }})
-
+              $inc:{'currentScore.$.score' :score , 'currentScore.$.totalCorrectAnswers': score ? 1 : 0 }})
             if(!savedScore.modifiedCount){
                 return NextResponse.json({error:"something went wrong"} , {status:500})
             } 
@@ -38,7 +39,7 @@ export async function POST(req){
                 { email },
                 {
                   $push: {
-                      currentScore: { score, category, totalQuestions },
+                      currentScore: { score, category, totalQuestions , totalCorrectAnswers : score ? 1 : 0},
                       prevChoice: prevChoice ,
                   }
                 }

@@ -16,7 +16,6 @@ import toast, { Toaster } from 'react-hot-toast'
 
  function GameSetting({user , quizOptions}) {
 
-
  const {originalStyle , hoverStyle, notSelectedStyle , selectedStyle} = dynamicStyles
   const [style , setStyle] = useState(originalStyle)
 

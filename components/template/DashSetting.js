@@ -24,8 +24,8 @@ function DashSetting({user}) {
 
   const logOutHandler = ()=>{
     Cookies.remove("Authorization")
+    router.push("/")
     router.refresh() 
-    router.replace("/")
   }
   const submitChange = async()=>{
     if(data.username){

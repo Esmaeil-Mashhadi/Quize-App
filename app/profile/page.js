@@ -14,7 +14,7 @@ const page = async() => {
       const quizOptions = await quizModel.findOne({user : user?.email} , {user :0 , _id :0 , "__v" :0})
       return (
             <div>
-                  <ProfilePage quizOptions = {JSON.parse(JSON.stringify(quizOptions))} user ={user}  />
+                  <ProfilePage quizOptions = {JSON.parse(JSON.stringify(quizOptions))} user ={user} />
             </div>
       );
 };

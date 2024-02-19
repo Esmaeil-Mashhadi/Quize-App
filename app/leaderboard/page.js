@@ -1,8 +1,15 @@
+import LeaderBoard from '@/components/template/LeaderBoard'
+import userModel from '@/model/usermodel'
+import connectDB from '@/utils/connectionToDB'
 import React from 'react'
 
-function LeaderBoardPage() {
+async function LeaderBoardPage() {
+  await connectDB()
+  const users = await userModel.find({} , {userScore: 1 , username: 1 , _id:0})
   return (
-    <div>LeaderBoardPage</div>
+    <div>
+      <LeaderBoard users = {users}/>
+    </div>
   )
 }
 
