@@ -11,7 +11,7 @@ const checkUserPermission = async(cookie)=>{
    if(!email , !exp) return false
 
  await connectDB()
- const data = await userModel.findOne({email} , {email : 1 , username : 1 , userScore : 1 , _id: 0})
+ const data = await userModel.findOne({email} , {email : 1 , username : 1 , userScore : 1 , currentQuiz : 1 , _id: 0})
  const user = JSON.parse(JSON.stringify(data))
  if(!user) return false 
 
@@ -19,7 +19,7 @@ const checkUserPermission = async(cookie)=>{
     return false
  }
 
- return {user:{email :user?.email  , username: user?.username , userScore: user.userScore  } , status:"authenticated"}
+ return {user:{email :user?.email  , username: user?.username , userScore: user.userScore , currentQuiz:user.currentQuiz } , status:"authenticated"}
 }
 
 export default checkUserPermission

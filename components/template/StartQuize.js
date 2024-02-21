@@ -32,8 +32,8 @@ const StartQuize = () => {
     useEffect(()=>{
         const getQuizeFromDataBase = async()=>{
             const res = await fetch('/api/quiz/currentQuiz')
-            const {currentQuize} = await res.json()
-            setDataStorage(currentQuize)
+            const {currentQuiz} = await res.json()
+            setDataStorage(currentQuiz)
         }
         getQuizeFromDataBase()
     },[])

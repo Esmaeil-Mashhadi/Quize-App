@@ -10,12 +10,17 @@ body{
   height: 100vh;
   display: flex;
   flex-direction: column;
+  color: white;  
 }
+
+body a{
+  color: white;
+}
+
 
 *{
   margin: 0px;
   box-sizing: border-box;
   padding: 0px;
-  color: white;
   text-decoration: none;
 }

@@ -16,6 +16,14 @@
     background-color: rgba(0, 139, 139, 0.511);
 }
 
+.eyeContainer{
+    position: absolute;
+    right: 10px;
+    color: black;
+    top: 25%;
+    cursor: pointer;
+    z-index: 2;
+}
 .left{
     width: 50%;
     display: flex;
@@ -93,7 +101,7 @@
 .errorMessage{
     position: absolute;
     white-space: nowrap;
-    top: -25px;
+    top: 32px;
     border-radius: 5px;
     padding: 5px;
     right: 0px;

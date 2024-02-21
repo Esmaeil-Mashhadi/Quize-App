@@ -5,7 +5,7 @@ import { MdMarkEmailRead } from "react-icons/md";
 import { HiLogout } from "react-icons/hi";
 
 import { useEffect, useState } from "react";
-import toast, { Toaster } from "react-hot-toast";
+import toast, { Toaster } from 'react-hot-toast'
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
 import TotalShape from "../modules/TotalShap";
@@ -15,8 +15,9 @@ function DashSetting({user}) {
   const [isEdit , setIsEdit] = useState(false)
   const router = useRouter()
   const [data , setData] = useState({
-    username: ""
+    username: user?.username
   })
+
 
   const changeHandler = (e)=>{
     setData({username : e.target.value})
@@ -25,7 +26,7 @@ function DashSetting({user}) {
   const logOutHandler = ()=>{
     Cookies.remove("Authorization")
     router.push("/")
-    router.refresh() 
+    router.refresh()
   }
   const submitChange = async()=>{
     if(data.username){
@@ -52,32 +53,35 @@ function DashSetting({user}) {
         setIsEdit(false) 
       } 
     })
+    router.refresh()
   },[])
 
   return (
     <div className={styles.container}>
         
     <div className={styles.left}>
+    
          <button className={styles.logOut} onClick={logOutHandler}> Log out <HiLogout/></button>
+
 
         <div className={styles.profile}>
            <MdMarkEmailRead/> <span> Email </span> : {user.email}
         </div>
         <div className={styles.username}>
-          <FaUserGraduate/> <span> Username </span> : {isEdit ? <input onChange={changeHandler} placeholder="enter new user name" />
+          <FaUserGraduate/> <span> Username </span> : {isEdit ? <input value={data?.username} onChange={changeHandler} placeholder="enter new user name" />
               : user.username }
           {isEdit ? 
           <button onClick={submitChange}> submit change</button> 
-          :<button onClick={()=>setIsEdit(true)}> Chage username</button>
+          :<button onClick={()=>setIsEdit(true)}> Change username</button>
            }
         </div>
 
     </div>
 
+
       <div className={styles.right}>
         <TotalShape userScore={user?.userScore} />
       </div>
-      <Toaster />
     </div>
   )
 }

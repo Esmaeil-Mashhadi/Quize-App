@@ -1,5 +1,9 @@
 'use client'
 import styles from './GameSetting.module.css'
+import { AiFillWarning } from "react-icons/ai";
+import { PiArrowFatLineRightFill } from "react-icons/pi";
+
+
 import { useEffect, useState } from 'react'
 import Entertainment from '../modules/Entertainment'
 import Science from '../modules/Science'
@@ -12,6 +16,7 @@ import { addCategory, getOptions, reset } from '@/utils/reducers'
 import { dynamicStyles } from '@/utils/dynamicStyles'
 import { useRouter } from 'next/navigation'
 import toast, { Toaster } from 'react-hot-toast'
+import Link from 'next/link'
 
 
  function GameSetting({user , quizOptions}) {
@@ -64,6 +69,14 @@ import toast, { Toaster } from 'react-hot-toast'
   const dispatch = useDispatch()
 
   return (
+    <> 
+    {user?.currentQuiz?.length ? <div className={styles.unfinish}>
+      <p><AiFillWarning /> You have an unfinished quiz. Please complete the quiz for gameSetting before proceeding <AiFillWarning /> </p>  
+      <Link href="/quiz/start">Finish the quiz <PiArrowFatLineRightFill/></Link>
+      
+      </div> 
+      
+      : 
     <div className={styles.container}>
       <div className={styles.categoryContainer}>
         <h3>quiz Category</h3>
@@ -104,8 +117,9 @@ import toast, { Toaster } from 'react-hot-toast'
               <button onClick={resetHandler}>reset to default</button>
           </div>
 
-    <Toaster />
     </div>
+  }
+    </>
 
   )
 }

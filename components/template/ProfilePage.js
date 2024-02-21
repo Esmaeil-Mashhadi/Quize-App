@@ -6,7 +6,7 @@ import { MdDashboardCustomize } from "react-icons/md";
 import { RiMailSettingsFill } from "react-icons/ri";
 import DashSetting from './DashSetting';
 import GameSetting from './GameSetting';
-
+import { Toaster } from 'react-hot-toast';
 
 
 function ProfilePage({user , quizOptions}) {
@@ -59,6 +59,8 @@ function ProfilePage({user , quizOptions}) {
                     <GameSetting quizOptions = {quizOptions} user = {user}/>
                 </div>
             </div>
+
+            <Toaster />
     </div>
   )
 }

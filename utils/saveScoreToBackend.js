@@ -5,5 +5,4 @@ export const saveScore = async(dataStorage , questionIndex , index , score , cor
            totalQuestions : dataStorage?.length , prevChoice})
       })
       return await res.json()
-
 }

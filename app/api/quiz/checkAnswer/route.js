@@ -26,8 +26,8 @@ export async function POST(req){
         await connectDB()
         const {questionIndex , userChoice } = await req.json()
         const email= await checkUserExistence(req)
-        const {currentQuize} = await userModel.findOne({email} , {currentQuize: 1})
-        const { answers , correctAnswer} =  AnswersHandler(currentQuize[questionIndex]?.incorrect_answers , currentQuize[questionIndex]?.correct_answer)
+        const {currentQuiz} = await userModel.findOne({email} , {currentQuiz: 1})
+        const { answers , correctAnswer} =  AnswersHandler(currentQuiz[questionIndex]?.incorrect_answers , currentQuiz[questionIndex]?.correct_answer)
         
         if(userChoice){
             if(userChoice == correctAnswer){

@@ -14,7 +14,7 @@ const General = ({handleMouseLeave , handleMouseEnter , style , name , originalS
      
     return (
      <div onMouseLeave={handleMouseLeave} className={styles.generalContainer}>
-     <button   data-name = "other" onMouseEnter={handleMouseEnter} style={!selected ? notSelectedStyle : selectedStyle} className={styles.other}>{selected ? <Fragment>{selected}<FaCheckCircle/></Fragment>  : "Other"} </button>
+     <button data-name = "other" onMouseEnter={handleMouseEnter} style={!selected ? notSelectedStyle : selectedStyle} className={styles.other}>{selected ? <Fragment>{selected}<FaCheckCircle/></Fragment>  : "Other"} </button>
         <div style={name == "other" ? style : originalStyle} onMouseLeave={handleMouseLeave} className={styles.subGeneral}>
             {Object.entries(categoryCodes).map(([name , code])=>
                 (<button key={code} onClick={()=>categoryHandler({[name]:code})}>{code == category[name] ? <Fragment> {name} <FaCheckCircle/> </Fragment>: name}</button>))}

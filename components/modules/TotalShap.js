@@ -9,7 +9,7 @@ import { setTotalForAll } from '@/utils/setTotalForAll';
 
 
 function TotalShape({userScore}) {
-   
+
     const [number , setNumber] = useState(0)
     const [acc , setAcc] = useState(0)
     const [value , setValue] = useState('All')
@@ -17,13 +17,11 @@ function TotalShape({userScore}) {
     const [total , setTotal] = useState(()=>{
       const {totalCorrect , totalQuestions , totalScore} = setTotalForAll(userScore)
       return {category : "All", totalCorrect , totalQuestions , totalScore}
-      setNumber(degree)
-      setAcc(accuracy)
     })
     const [showList , setShowList] = useState(false)
 
    const {category , totalCorrect , totalQuestions , totalScore} = total
-    const accuracy = `${Math.round((totalCorrect /totalQuestions )*100)}%`
+    const accuracy = !totalQuestions? `${0}%` : `${Math.round((totalCorrect /totalQuestions )*100)}%`
     const degree = parseFloat(accuracy)/100 * 360
 
     const accStyle = {

@@ -30,7 +30,7 @@ async function Headers() {
           <Link href="/" className={styles.mainLink}>
                   Home
           </Link>
-          <Link href="" className={styles.mainLink}>
+          <Link href="/about-us" className={styles.mainLink}>
                   about us 
           </Link>
       
@@ -43,7 +43,7 @@ async function Headers() {
 
            <div className={styles.subLinks}>
                 <Link href={permission ? "/quiz" : "/profile"}> <PiExamFill/> start quiz</Link>
-                <Link  href=""><IoSettings/> my Score </Link>
+                <Link  href="/profile"><IoSettings/> quiz setting </Link>
                 <Link  href="/leaderboard"><MdLeaderboard/> leader board</Link>
            </div>
         </div>

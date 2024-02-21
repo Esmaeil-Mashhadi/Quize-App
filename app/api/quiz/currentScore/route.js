@@ -10,10 +10,9 @@ export async function GET(req){
         let finalData = {}
        const email = await checkUserExistence(req)
         const data = await userModel.findOne({email} , {currentScore: 1  , prevChoice : 1, _id:0})
-
                 const  {category , score, totalQuestions} = data?.currentScore[0]
                const correctOnes=  data?.prevChoice.filter(item => Object.keys(item).length == 1 )
-                const correctAnswers = correctOnes.length
+                const correctAnswers = correctOnes ?  correctOnes.length : 0
         
                  finalData = {
                     category ,
@@ -22,6 +21,7 @@ export async function GET(req){
                     notAnswered: totalQuestions - correctAnswers,
                     yourScore : score
                 }
+
             
                 return NextResponse.json(finalData)
             

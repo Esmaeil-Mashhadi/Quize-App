@@ -74,11 +74,13 @@
     border: none;
     height: 30px;
     margin-left: 10px;
+    color: white;
 }
 
 .username:hover > button{
     opacity: 1;
     pointer-events: all;
+
 }
 
 .username input {
@@ -107,10 +109,10 @@
 }
 .logOut svg{
     scale: 1.4;
-    filter: invert(100%);
 }
 
 .logOut:hover{
     box-shadow: 0px 0px 5px pink;
+    scale: 1.1;
 }
 

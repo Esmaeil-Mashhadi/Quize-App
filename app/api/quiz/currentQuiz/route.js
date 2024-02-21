@@ -30,9 +30,21 @@ export async function POST(req){
             dataCopy[index].allAnswers = allAnswers
             dataCopy[index].correctIndex = correctIndex
          })
-         const initialScore = {totalQuestions : dataCopy?.length , score:0 , category:dataCopy[0]?.category}
-         const currentQuize = await userModel.updateOne({email} , {$set : {currentQuize : dataCopy , currentScore:initialScore }}, {upsert:true})
-        if(!currentQuize.modifiedCount) return NextResponse.json({error:"something went wrong"} ,{status:500})
+         const {currentScore , userScore} = await userModel.findOne({email} , {currentScore: 1 , userScore:1, _id:0})
+
+         if(!currentScore?.length){
+
+            const setInitialScore = await userModel.updateOne({email} , {$push : {
+                currentScore : {category : dataCopy[0].category , score : 0 , totalCorrectAnswers:0 , totalQuestions: dataCopy.length } , 
+                ...!userScore.length && {userScore: {category : dataCopy[0].category , score : 0 , totalCorrectAnswers:0 , totalQuestions: dataCopy.length}}}})
+
+            if(!setInitialScore.modifiedCount){
+                return NextResponse.json({error:"failed to save initial score"} , {status:500})
+            }
+         }
+        
+         const currentQuiz = await userModel.updateOne({email} , {$set : {currentQuiz : dataCopy }}, {upsert:true})
+        if(!currentQuiz.modifiedCount) return NextResponse.json({error:"something went wrong"} ,{status:500})
         return NextResponse.json({status:"success"} , {status:200})
     } catch (error) {
         return NextResponse.json({error:error.message} , {status:500})
@@ -45,10 +57,12 @@ export async function GET(req){
     try {
         await connectDB()
         const email =  await checkUserExistence(req)
-        const currentQuize = await userModel.findOne({email} , {currentQuize : 1 , _id :0})
-        return NextResponse.json(currentQuize, {status:200})
+        const currentQuiz = await userModel.findOne({email} , {currentQuiz : 1 , _id :0})
+        return NextResponse.json(currentQuiz, {status:200})
     } catch (error) {
         console.log(error);
     }
  
 }
+
+

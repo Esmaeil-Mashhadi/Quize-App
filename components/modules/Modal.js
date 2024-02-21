@@ -22,7 +22,7 @@ function Modal({setShowModal}) {
         const result = await res.json()
         if(result.status == 'success'){
                 toast.success(result.message)
-                router.refresh()
+                  router.refresh()
                   router.push('/quiz')
         }else{
                 toast.error("failed to save score")

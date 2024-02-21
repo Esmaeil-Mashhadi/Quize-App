@@ -11,10 +11,13 @@ export const formValidation = ({email , username , password , confirm , check})=
         }
 
         if(!username){
-            errorMessages.usernameError = "waiting for the userName !"
-        }else if(Array.from(username).length < 3){
-            errorMessages.usernameError = "at least 3 character"
-        }else{
+            errorMessages.usernameError = "waiting for the username !"
+        }else if(!/^[a-zA-Z0-9]+([._]?[a-zA-Z0-9]+)*$/.test(username)){
+            errorMessages.usernameError = "please enter valid username"
+        }else if (Array.from(username).length <3|| Array.from(username).length> 20 ){
+             errorMessages.usernameError = "username must be between 3 -20 character"
+        }
+        else{
             delete errorMessages.usernameError
         }
 

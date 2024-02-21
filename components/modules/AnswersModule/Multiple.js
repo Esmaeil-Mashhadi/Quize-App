@@ -17,6 +17,7 @@ function Multiple({dataStorage , setUserChoice , userChoice , questionIndex}) {
           setUserChoice({[index] :"correct"})
           const score = myScore
           const result = await saveScore(dataStorage , questionIndex , index , score)
+          console.log(result);
         if(result.status !="success"){
             toast.error("something went wrong")
         }

@@ -12,13 +12,71 @@
     padding: 10px;
 }
 
+.top{
+    display: flex;  
+    justify-content:space-around;
+    align-items: center;
+}
+
 .scoreContainer{
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
-.scoreContainer h4{
-    margin: auto;
+.categories{
+    display: flex;
+    position: relative;
+}
+
+.cateInput input{
+    outline: none;
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+    font-weight: bold;
+    background-color: rgba(181, 239, 239, 0.538);  
+}
+
+.cateInput{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.categoriesList{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 69%;
+    right: 0px;
+    top:25px;
+    background-color: rgba(4, 40, 56, 0.551);
+    border-radius: 5px;
+    font-size: 12px;
+    list-style: none;
+    gap: 10px;
+    padding: 10px 0px;
+    max-height: 276px;
+    overflow-y: auto;
+}
+
+.categoriesList::-webkit-scrollbar{
+    background-color: darkcyan;  
+    border-radius: 5px;
+}
+
+.categoriesList::-webkit-scrollbar-thumb{
+    background-color: aquamarine;
+    border-radius: 5px;
+}
+
+.categoriesList a{
+    padding: 5px;
+}
+
+.categoriesList a:hover{
+    background-color: white;
+    color: black;
+    cursor: pointer;
 }
 
 .names{
@@ -31,7 +89,7 @@
     gap: 5px;
     justify-content: space-between;
     padding: 10px; 
-    background-color: rgb(26, 102, 76);
+    background-color: rgba(173, 216, 230, 0.481);
 }
 .row p {
     white-space: nowrap;
@@ -48,4 +106,11 @@
     padding: 10px;   
     font-weight: bold; 
     background-color: rgb(2, 127, 120);
+}
+
+.noScore{
+position: absolute;
+top: 50%;
+right: 50%;
+transform: translate(50%, 50%);
 }

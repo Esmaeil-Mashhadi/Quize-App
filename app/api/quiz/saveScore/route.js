@@ -9,13 +9,13 @@ export async function POST(req){
         await connectDB()
         const email = await checkUserExistence(req)
         const {score , category , totalQuestions , prevChoice} = await req.json()
-        const checkCurrentCategoryExistence = await userModel.findOne({'currentScore.category' : category})
-        const checkUserCategoryExistence = await userModel.findOne({"userScore.category" : category})
-        
+        const checkCurrentCategoryExistence = await userModel.findOne({$and:[{email} , {'currentScore.category' : category}]})
+        const checkUserCategoryExistence = await userModel.findOne({$and:[{email} , {'userScore.category' : category}]})
         if(checkUserCategoryExistence){
             const updateCategory = await userModel.updateOne({$and:[{email , "userScore.category" :category}]}, {$inc:{
                 'userScore.$.score': score , 'userScore.$.totalCorrectAnswers': score ? 1 : 0
             }})
+
             if(!updateCategory.modifiedCount){
                 return NextResponse.json({error:"failed to update socre"} , {status:500})
             }
@@ -31,7 +31,7 @@ export async function POST(req){
               $push:{prevChoice : prevChoice},
               $inc:{'currentScore.$.score' :score , 'currentScore.$.totalCorrectAnswers': score ? 1 : 0 }})
             if(!savedScore.modifiedCount){
-                return NextResponse.json({error:"something went wrong"} , {status:500})
+                return NextResponse.json({error:"something went wrong "} , {status:500})
             } 
             return NextResponse.json({status :"success"} , {status:200})
         }else{

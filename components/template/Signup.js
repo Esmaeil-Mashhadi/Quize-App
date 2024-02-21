@@ -5,6 +5,10 @@ import { formValidation } from '@/utils/formValidation'
 import { useState } from 'react'
 import toast, { Toaster } from 'react-hot-toast'
 import { useRouter } from 'next/navigation'
+import { RxEyeClosed } from "react-icons/rx";
+import { ImEye } from "react-icons/im";
+
+
 
 function Signup() {
     const [data , setData] = useState({
@@ -17,6 +21,7 @@ function Signup() {
 
     const router = useRouter()
 
+    const [showEye , setShowEye] = useState(false)
     const [focused , setFocused] = useState({
         email:false , username : false , password : false , confirm:false
     })
@@ -81,14 +86,15 @@ function Signup() {
                         }
                 </div>
                 <div className={styles.inputes}>
-                        <input style={focused.password && result.passwordError ? {background:"pink"} : null}  name='password' onChange={changeHandler} required id='password' onFocus={focusHandler}  />
+                        <input type = {showEye ? "text" : "password"} style={focused.password && result.passwordError ? {background:"pink"} : null}  name='password' onChange={changeHandler} required id='password' onFocus={focusHandler}  />
                         <label htmlFor='password'>Password</label>
+                        <div onClick={()=>setShowEye(!showEye)} className={styles.eyeContainer}>{showEye ? <ImEye/> :  <RxEyeClosed />}</div>
                         {focused.password && result.passwordError && 
                             <p className={styles.errorMessage}>{result.passwordError}</p>
                         }
                 </div>
                 <div className={styles.inputes}>
-                        <input style={focused.confirm && result.confirmError ? {background:"pink"} : null} name='confirm' onChange={changeHandler} required id='confirm' onFocus={focusHandler}  />
+                        <input type='password' style={focused.confirm && result.confirmError ? {background:"pink"} : null} name='confirm' onChange={changeHandler} required id='confirm' onFocus={focusHandler}  />
                         <label htmlFor='confirm'>Confirm</label>
                         {focused.confirm && result.confirmError && 
                             <p className={styles.errorMessage}>{result.confirmError}</p>

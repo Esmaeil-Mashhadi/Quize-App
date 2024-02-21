@@ -5,7 +5,15 @@ import { NextResponse } from "next/server";
 export async function POST(req){
     await connectDB()
 
+    
     const {username , email} = await req.json()
+    if(!username){
+        return NextResponse.json({error: "username is empty !"})
+    }else if(!/^[a-zA-Z0-9]+([._]?[a-zA-Z0-9]+)*$/.test(username)){
+       return NextResponse.json({error: "please enter valid username"})
+    }else if (Array.from(username).length <3|| Array.from(username).length> 20 ){
+         return NextResponse.json({error: "username must be between 3 -20 character"})
+    }
     const checkUserExistence = await userModel.findOne({email})
     if(!checkUserExistence) return NextResponse.json({error:"action denied register first"} , {status:400})
     const checkUsername = await userModel.findOne({username})

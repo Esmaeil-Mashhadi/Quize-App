@@ -8,25 +8,33 @@ import { useDispatch } from 'react-redux';
 import { fetchQuiz } from '@/utils/reducers';
 import toast, { Toaster } from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { DNA } from 'react-loader-spinner';
 
 
-function QuizePage({quizOption , requestUrl}) {
+function QuizePage({priorQuize , quizOption , requestUrl}) {
     const {category , difficulty , type , amount} = quizOption
+
+    const [quizes, setQuizes] = useState([])
+    const [pending , setPending] = useState(false)
+
     const {result :{data , isLoading , Error }}  = useSelector(states => states.fetchStore)
+
 
     const dispatch = useDispatch()
 
    const router = useRouter()
 
-    const saveCurrentQuize = async()=>{
+
+    const savecurrentQuiz = async()=>{
         try {  
+            setPending(true)
                 const res = await fetch('/api/quiz/currentQuiz' , {
-                    method:"POST"  , body :JSON.stringify(data) , headers :{"Content-Type" : "application/json"} ,
+                    method:"POST"  , body :JSON.stringify(data.length ? data : quizes) , headers :{"Content-Type" : "application/json"} ,
                      credentials:"include"
                 })
                 const response = await res.json()
+
                 if(response.status != "success" && !data?.length){
                     toast.error('too many request , try again later')
                     setTimeout(() => {
@@ -42,13 +50,19 @@ function QuizePage({quizOption , requestUrl}) {
      }
 
     const startHandler = async()=>{
-          await saveCurrentQuize()    
+          await savecurrentQuiz()    
     }
 
     useEffect(()=>{
-        dispatch(fetchQuiz(requestUrl))
+        if(priorQuize?.length){
+            setQuizes(priorQuize)
+        }else{
+            dispatch(fetchQuiz(requestUrl))
+        }
     },[])
+
     
+  if(pending) return <DNA width="100%"/>
   if(isLoading) return <DNA width="100%" />
   return (
     <div className={styles.container}>

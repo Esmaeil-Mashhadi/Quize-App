@@ -23,6 +23,7 @@
     transform: var(--transform);
     opacity: var(--opacity);
     transition: .2s ease;
+
 }
 
 .numbers input{

@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Layout from "@/components/layout/Layout";
 import ReduxProvider from "@/utils/ReduxProvider";
+import NextProgress from "@/utils/NextProgress";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +17,8 @@ export default function RootLayout({ children }) {
        <body  className={inter.className}>
        <ReduxProvider>
            <Layout>
-               {children}
+           <NextProgress />
+              {children}
           </Layout>
        </ReduxProvider>
 
