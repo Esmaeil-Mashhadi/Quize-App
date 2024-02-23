@@ -62,6 +62,7 @@ const StartQuize = () => {
         setShowModal(true)
     }
    
+
     if(!dataStorage.length) return <h1 className={styles.loading}><DNA/></h1>
 
     return (
@@ -73,12 +74,15 @@ const StartQuize = () => {
                   <button onClick={finishHandler} className={styles.finish}>
                     <div className={styles.circle}>
                         <img src='/svgs/finish.png' />
-                        <p className={styles.endQuize}>Finish the Quize </p>
+                        <p className={styles.endQuize}> Finish the Quize </p>
                     </div>
                  </button>
 
                     <div className={styles.answers}>
-                       {type =="boolean" && <BooleanAnswer />}
+
+                       {type =="boolean" && <BooleanAnswer dataStorage = {dataStorage} userChoice = {userChoice} 
+                       setUserChoice = {setUserChoice} questionIndex ={index}/>}
+
                        {type =="multiple" && <Multiple dataStorage = {dataStorage}  userChoice= {userChoice} 
                        setUserChoice ={setUserChoice}
                         questionIndex = {index} />}

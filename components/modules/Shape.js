@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react'
 import styles from './Shape.module.css'
+import { useEffect, useState } from 'react'
 
 function Shape({userScore}) {
     

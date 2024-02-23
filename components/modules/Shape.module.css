@@ -24,3 +24,11 @@
 .conicContainer p{
     z-index: 2;
 }
+
+
+@media screen and (max-width:700px) {
+    .conicContainer{
+        width: 150px;
+        height: 150px;
+    }
+}

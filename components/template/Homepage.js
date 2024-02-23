@@ -1,5 +1,5 @@
-import CategoryCard from '../modules/CategoryCard'
 import styles from './Homepage.module.css'
+import CategoryCard from '../modules/CategoryCard'
 
 function Homepage() {
 
@@ -7,8 +7,9 @@ function Homepage() {
     <div>
         <div className={styles.top}>
             <div className={styles.topLeft}>
-              <img src='Quiz.png' /> 
+              <img src='Quiz.png'/> 
             </div>
+            
             <div className={styles.topRight}>
             Welcome to our exciting quiz website, 
             where knowledge meets fun! Explore a wide range of captivating categories, including mythology, cars, celebrities, sciences and etc ... ,

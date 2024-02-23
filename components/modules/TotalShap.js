@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react'
 import styles from './TotalShape.module.css'
+import { useEffect, useState } from 'react'
 import { BsQuestionSquareFill } from "react-icons/bs";
 import { GrScorecard } from "react-icons/gr";
 import { FaCalendarCheck } from "react-icons/fa6";

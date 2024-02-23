@@ -1,5 +1,5 @@
-import { FaCheckCircle } from 'react-icons/fa';
 import styles from './Science.module.css'
+import { FaCheckCircle } from 'react-icons/fa';
 import { userChoice } from '@/utils/userOptionChoice';
 import { Fragment } from 'react';
 

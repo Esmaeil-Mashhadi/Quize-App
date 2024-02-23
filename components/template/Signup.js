@@ -1,6 +1,6 @@
 'use client'
-import Link from 'next/link'
 import styles from './Signup.module.css'
+import Link from 'next/link'
 import { formValidation } from '@/utils/formValidation'
 import { useState } from 'react'
 import toast, { Toaster } from 'react-hot-toast'

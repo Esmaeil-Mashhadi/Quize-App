@@ -5,8 +5,8 @@ import { NextResponse } from "next/server";
 
  const AnswersHandler = (incorrect , correct  )=>{
 
-    const randomIndex = Math.floor((Math.random()*4))
-        
+    const quantity = incorrect.length == 1 ? 2 : 4
+    const randomIndex = Math.floor((Math.random()*quantity))
     let allAnswers = []
     if(incorrect && correct){
         allAnswers = [...incorrect]

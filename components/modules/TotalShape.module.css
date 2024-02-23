@@ -120,3 +120,42 @@
 .conicContainer p{
     z-index: 2;
 }
+
+@media screen and (max-width:400px) {
+  .choose label{
+    font-size: 12px;
+  }
+  .choose input{
+    font-size: 12px;
+  }
+  .categoriesList li{
+    font-size: 12px;
+  }
+  .conicContainer{
+    width: 150px;
+    height: 150px;
+    font-size: 12px;
+  }
+}
+
+
+@media screen and (max-width:300px) {
+    .choose {
+        flex-direction: column;
+    }
+    .choose input{
+        width: 240px;
+        margin: auto;
+    }
+    .categoriesList {
+        width: 200px;
+        margin-left: 50px;
+    }
+
+    .scoreContainer{
+        font-size: 8px;
+        min-width: 200px;
+        max-width: 200px;
+        margin: auto;
+    }
+}

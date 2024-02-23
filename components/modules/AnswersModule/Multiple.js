@@ -1,5 +1,5 @@
-import toast, { Toaster } from 'react-hot-toast'
 import styles from './Multiple.module.css'
+import toast, { Toaster } from 'react-hot-toast'
 import { saveScore } from '@/utils/saveScoreToBackend'
 
 function Multiple({dataStorage , setUserChoice , userChoice , questionIndex}) {
@@ -17,7 +17,6 @@ function Multiple({dataStorage , setUserChoice , userChoice , questionIndex}) {
           setUserChoice({[index] :"correct"})
           const score = myScore
           const result = await saveScore(dataStorage , questionIndex , index , score)
-          console.log(result);
         if(result.status !="success"){
             toast.error("something went wrong")
         }

@@ -1,6 +1,6 @@
 'use client'
-import { useEffect, useState } from 'react';
 import styles from './QuestionNumber.module.css'
+import { useEffect, useState } from 'react';
 import { changeAmount } from '@/utils/reducers';
 
 const QuestionNumber = ({handleMouseLeave , handleMouseEnter , style , name , originalStyle , dispatch , amount}) => {

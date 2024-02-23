@@ -1,6 +1,6 @@
 'use client'
-import { useState } from 'react'
 import styles from './HameMenu.module.css'
+import { useState } from 'react'
 import Link from 'next/link'
 
 import { PiExamFill } from "react-icons/pi";
@@ -14,6 +14,10 @@ import { IoMdArrowDropright } from "react-icons/io";
     const [clicked , setClicked] = useState(false)
     const hamHandler = ()=>{
         setClicked(!clicked)
+    }
+
+    const linkHandler =()=>{
+        setClicked(false)
     }
 
     const hamStyle = {
@@ -35,17 +39,21 @@ import { IoMdArrowDropright } from "react-icons/io";
               <span></span>
          </div>
         
-            <div style={transform} className={styles.mobileMenu}>
-                    <Link className={styles.quizeLink} href="">quiz <IoMdArrowDropright/> </Link>
-                        <div className={styles.quizeSublinks}>
-                             <Link href=""> <PiExamFill/> start quiz</Link>
-                             <Link  href=""><IoSettings/> settings</Link>
-                             <Link  href=""><MdLeaderboard/> leader board</Link>
+              <div style={transform} className={styles.mobileMenu}>
+                <div className={styles.linkContainer}>
+                    <Link onClick={linkHandler} href='/'>Home</Link>
+                    <Link className={styles.quizLink} href="">quiz <IoMdArrowDropright/> </Link>
+                        <div className={styles.quizSublinks}>
+                        <Link onClick={linkHandler} href={permission ? "/quiz" : "/profile"}> <PiExamFill/> start quiz</Link>
+                        <Link onClick={linkHandler}  href="/profile"><IoSettings/> quiz setting </Link>
+                        <Link  onClick={linkHandler}  href="/leaderboard"><MdLeaderboard/> leader board</Link>
                         </div>
-                    {permission ? <Link onClick={()=> setClicked(false)}  href="/profile">Profile</Link> : 
-                    <Link onClick={()=> setClicked(false)} href="">SignUp</Link>
+                    {permission ? <Link onClick={linkHandler}  href="/profile">Profile</Link> : 
+                    <Link onClick={linkHandler}  href="/signup">SignUp</Link>
                     }
-                    <Link onClick={()=>setClicked(false)} href="">About us</Link>
+                    <Link onClick={linkHandler} href="/about-us">About us</Link>
+            </div>
+
              </div>
         
 

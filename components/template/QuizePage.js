@@ -1,7 +1,7 @@
 'use client'
+import styles from './QuizePage.module.css'
 import Link from 'next/link'
 import { useSelector } from 'react-redux';
-import styles from './QuizePage.module.css'
 import { PiArrowFatLineRightFill } from "react-icons/pi";
 import { MdSettings } from "react-icons/md";
 import { useDispatch } from 'react-redux';
@@ -36,7 +36,7 @@ function QuizePage({priorQuize , quizOption , requestUrl}) {
                 const response = await res.json()
 
                 if(response.status != "success" && !data?.length){
-                    toast.error('too many request , try again later')
+                    toast.error('Server is currently busy. Please try again later.')
                     setTimeout(() => {
                         router.push('/quiz')
                     }, 2000);

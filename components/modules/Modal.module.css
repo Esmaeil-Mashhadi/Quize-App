@@ -8,12 +8,14 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
 }
+
+
 .buttonContainer{
     display: flex;
     gap: 20px;
 }
+
 
 .buttonContainer button{
     width: 80px;
@@ -39,7 +41,6 @@
     transform: scaleX(-1);
 }
 .buttonContainer button svg{
-    filter: invert(100%);
     scale: 1.5;
     transition: .2s ease;
 }
@@ -68,4 +69,41 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+
+@media screen and (max-width:700px) {
+    .container{
+        width: 400px;
+         font-size: 14px;
+    }
+   
+    .modal{
+        flex-direction: column-reverse;
+        justify-content: center;
+        gap: 40px;
+    }
+}
+
+
+@media screen and (max-width:400px) {
+    .container{
+        width: 350px;
+        font-size: 12px;
+    }
+
+    .modal{
+        flex-direction: column-reverse;
+    }
+}
+
+
+@media screen  and (max-width:300px){
+    .container{
+        width: 250px;
+        font-size: 10px;
+        height: 450px;
+    }
+
+
 }

@@ -30,13 +30,14 @@
     transform: var(--lastChild);
 }
 
+
 .mobileMenu{
     position: absolute;
     display: flex;
     flex-direction: column;
     background-color: rgb(1, 106, 106);
     padding: 5px;
-    height: calc(100% - 80px);
+    height: 100%;
     z-index: 2;
     left: 0px;
     width: 50vw;
@@ -55,36 +56,54 @@
     min-width: 70px;
 }
 
+.linkContainer{
+    position: relative;
+    height: 300px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+}
 
-.quizeSublinks{
+.quizSublinks{
     display: flex;
     flex-direction: column;
     gap: 20px;
     position: absolute;
     background-color: rgb(1, 106, 106);
-    top: 370px;
+    top:15%;
     left: 150px;
     padding: 20px;
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
     pointer-events: none;
-    transform: translateX(-50%);
+    transform: var(--transform);
     opacity: 0;
     transition: .2s ease;
 }
 
-.quizeLink:focus + .quizeSublinks{
+.quizLink:focus + .quizSublinks , 
+.quizSublinks:focus-within{
     opacity: 1;
-    transform: translateX(0%);
+    transform: var(--transform);
     pointer-events: all;
 }
 
-.quizeLink:focus {
+.quizLink:focus {
     background-color: darkcyan;
     border-radius: 5px;
     padding: 2px;
 }
 
-.quizeSublinks a{
+.quizSublinks a{
     white-space: nowrap;
+}
+
+
+@media screen and (max-width:300px) {
+    .quizSublinks{
+        left: 100px;
+    }
 }

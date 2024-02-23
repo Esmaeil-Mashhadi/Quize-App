@@ -9,8 +9,8 @@
     cursor: pointer;
     border-radius: 5px;
     box-shadow: 0px 0px 5px aqua;
-    padding: 5px;
-    width: 120px;
+    padding: 6px;
+    min-width: 120px;
     text-align: center;
 
 }
@@ -77,24 +77,24 @@
     .questionNumber{
         font-size: 12px;
     }
-    .main{
-        width:88px;
-    }
+
 
     .questionNumber input{
         width: 88px;
     }
 }
 
-@media screen and (max-width : 300px) {
-    .questionNumber{
-        font-size: 8px;
-    }
+
+
+@media screen and (max-width:400px) {
     .main{
-        width:68px;
+        min-width: 85px;
+        font-size: 10px !important;
+        white-space: wrap;
     }
 
     .questionNumber input{
-        width: 68px;
+        font-size: 10px;
+        width: 70px;
     }
 }

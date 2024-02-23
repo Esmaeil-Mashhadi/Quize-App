@@ -90,17 +90,16 @@
 
 }
 
-@media screen and (max-width : 300px) {
-
-    .difficulty button{
-        width:68px;
-        font-size: 9px;
-
-    }
+@media screen and (max-width:400px) {
     .main{
-        width: 120px;
-        padding:7px 0px;
-        white-space: wrap
+        width: 85px;
+        font-size: 10px !important;
+        white-space: wrap;
+        padding: 6px;
     }
 
+    .diffs button{
+        font-size: 10px;
+        width: 70px;
+    }
 }

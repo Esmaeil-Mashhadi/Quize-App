@@ -9,7 +9,7 @@
     border-radius: 5px;
     box-shadow: 0px 0px 5px var(--color);
     padding: 5px;
-    width: 120px;
+    min-width: 120px;
     text-align: center;
     background-color: var(--background);
     border: none;
@@ -80,6 +80,18 @@
 }
 
 
+@media screen and (max-width:400px) {
+    .mainScience{
+        min-width: 85px;
+        font-size: 10px !important;
+
+    }
+
+    .subCategories button{
+        font-size: 10px;
+        width: 70px;
+    }
+}
 @media screen and (max-width : 300px) {
 
     .scienceContainer button{

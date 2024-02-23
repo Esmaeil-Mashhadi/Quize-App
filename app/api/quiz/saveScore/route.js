@@ -1,7 +1,6 @@
 import userModel from "@/model/usermodel";
 import { checkUserExistence } from "@/utils/collectionCheck/checkUserExistence";
 import connectDB from "@/utils/connectionToDB";
-import { saveScore } from "@/utils/saveScoreToBackend";
 import { NextResponse } from "next/server";
 
 export async function POST(req){
@@ -59,10 +58,11 @@ export async function POST(req){
 }
 
 
-export async function GET(){
+export async function GET(req){
     try {
         await connectDB()
-        const userPrevChoice = await userModel.findOne({} , {prevChoice : 1 , _id : 0})
+        const email =  await checkUserExistence(req)
+        const userPrevChoice = await userModel.findOne({email} , {prevChoice : 1 , _id : 0})
         return NextResponse.json(userPrevChoice)
     } catch (error) {
         return NextResponse.json({error : error.message || "internal server error"}, {status:500})

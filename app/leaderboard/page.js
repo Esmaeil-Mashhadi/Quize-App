@@ -35,9 +35,7 @@ async function LeaderBoardPage({ searchParams }) {
   }
 
   return (
-    <div>
       <LeaderBoard cateList={cateList} searchParams={searchParams} users={JSON.parse(JSON.stringify(users))} />
-    </div>
   );
 }
 

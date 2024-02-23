@@ -13,48 +13,47 @@
     justify-content: center;
 }
 .left{
-    width: 100%;
+   width: 100%;
     display: flex;
     flex-direction: column;
     gap: 50px;
     justify-content: center;
-    margin-left: 50px;
-    
+    padding-left: 50px;
 }
 
 .profile svg{
-    scale: 2;
+    min-width: 30px;
+    min-height: 50px;
 }
 .username svg{
-    scale: 2;
+    min-width: 30px;
+    min-height: 30px;
 }
+
 .profile{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-weight: bold;
-    font-size: 20px;
-    white-space: nowrap;
+ display: flex;
+ align-items: center;
+ font-size: 20px;
+ font-weight: bold;
+ gap: 5px;
+
 }
+
+.profile p {
+    max-width: 350px;
+    word-wrap: break-word;
+}
+
 
 .profile span{
     color: darkcyan;
     margin-left: 10px;
 }
-.username h3{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.username span{
-    color: darkcyan;
-    margin-left: 10px;
-}
 
 .username {
+    position: relative;
     display: flex;
-    gap: 10px;
+    gap: 5px;
     font-weight: bold;
     align-items: center;
     white-space: nowrap;
@@ -62,29 +61,36 @@
     font-size: 20px;
 }
 
-.username button{
-    cursor: pointer;
-    opacity: 0;
-    pointer-events: none;
-    transition: .2s ease;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    background-color: transparent;
-    border: none;
-    height: 30px;
+.editIcon{
+    padding-left: 5px;
+}
+.username span{
+    color: darkcyan;
     margin-left: 10px;
-    color: white;
 }
 
-.username:hover > button{
+.changeUsername{
+    opacity:0;
+    user-select: none;
+    font-weight: lighter;
+    font-size: 12px;
+    transition: .2s ease;
+}
+
+
+.editIcon{
+    cursor: pointer;
+    padding-left: 10px;
+    scale: .7;
+}
+
+.editIcon:hover + .changeUsername{
     opacity: 1;
-    pointer-events: all;
-
 }
+
 
 .username input {
- width: fit-content;
+ width: 150px;
  padding: 5px;
  border-radius: 5px;
  border: none;
@@ -116,3 +122,74 @@
     scale: 1.1;
 }
 
+
+@media screen and (max-width:850px) {
+    .container{
+        flex-direction: column;
+    }
+    .left{
+        gap: 30px;
+    }
+    .profile{
+        font-size: 15px;
+    }
+    .username{
+        font-size: 15px;
+    }
+    .profile p {
+        max-width: 250px;
+        word-wrap: break-word;
+    }
+}
+
+
+
+@media screen and (max-width:500px) {
+    .changeUsername {
+        display: none;
+    }
+    .profile{
+        font-size: 12px;
+    }
+    .username {
+        position: relative;
+    }
+
+    .username input {
+        width: 100px;
+        font-size: 12px;
+    }
+    .username button:last-child{
+        position: absolute;
+        right: 38%;
+        top: 30px;
+    }
+       
+    .profile p {
+        max-width: 150px;
+        word-wrap: break-word;
+    }
+  
+}
+
+@media screen and (max-width:300px) {
+
+    .left{
+      padding-left: 10px;
+    }
+
+    .profile{
+        font-size: 10px;
+        white-space: wrap;
+    }
+    .username {
+        font-size: 10px;
+    }
+    .logOut{
+        font-size: 12px;
+    }
+    .profile p {
+        max-width: 100px;
+        word-wrap: break-word;
+    }
+}

@@ -1,7 +1,7 @@
 'use client'
 
-import { useState } from 'react';
 import styles from './ProfilePage.module.css'
+import { useState } from 'react';
 import { MdDashboardCustomize } from "react-icons/md";
 import { RiMailSettingsFill } from "react-icons/ri";
 import DashSetting from './DashSetting';
@@ -15,13 +15,13 @@ function ProfilePage({user , quizOptions}) {
 
 
     const fadeRight = {
-        'width' : leftClick && "0px",
-        'opacity': leftClick && "0", 
+        '--size' : leftClick ? "0px" : "100%",
+        '--opacity': leftClick && "0", 
     }
 
     const fadeLeft = {
-        'width' : rightClick && "0px",
-        'opacity': rightClick && "0", 
+        '--size' : rightClick ? "0px" :"100%",
+        '--opacity': rightClick && "0", 
     }
 
     const dashSettingStyle = {

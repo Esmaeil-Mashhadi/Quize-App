@@ -1,5 +1,5 @@
-import Link from 'next/link';
 import styles from './about.module.css'
+import Link from 'next/link';
 const page = () => {
     return (
         <div className={styles.container}>

@@ -1,6 +1,6 @@
 'use client'
-import Link from "next/link"
 import styles from "./LeaderBoard.module.css"
+import Link from "next/link"
 import { useEffect, useState } from "react"
 
 function LeaderBoard({cateList ,searchParams , users}) {

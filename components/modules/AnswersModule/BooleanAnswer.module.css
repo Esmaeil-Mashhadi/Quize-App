@@ -4,11 +4,16 @@
     margin-top: 20px;
     position: relative;
     z-index: 1;
+    height: 132px;
+    align-items: center;
 }
 
+.container button{
+    height: 30%;
+}
 
-.container button:last-child{
-    padding: 5px;
+.container button:nth-child(2){
+    padding: 10px;
     color: black;
     font-weight: bold;
     border-radius: 5px;
@@ -19,13 +24,22 @@
     gap: 10px;
     position: relative;
     border: none;
-    background-color: rgba(241, 191, 98, 0.723);
     transition: .2s ease;
 }
 
+.container button p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.container button p svg{
+    scale: 2;
+    color: black;
+}
 
 .container button:first-child{
-    padding: 5px;
+    padding: 10px;
     color: black;
     border: none;
     font-weight: bold;
@@ -36,7 +50,6 @@
     width: 120px;
     gap: 10px;
     transition: .2s ease;
-    background-color: rgba(170, 246, 95, 0.7);
 }
 
 .container button:hover{
@@ -44,10 +57,7 @@
     cursor: pointer;
 }
 
-.container button svg{
-    filter: invert(100%);
-    scale: 1.5;
-}
+
 
 .circle{
     width: 60px;
@@ -72,4 +82,18 @@
 
 .circle img{
     width: 100%;
+}
+
+@media screen and (max-width:600px) {
+    .container{
+        height: 105px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .container button{
+        height: 40%;
+    }
+
+
 }

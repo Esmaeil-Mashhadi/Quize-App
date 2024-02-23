@@ -1,5 +1,5 @@
-import Link from 'next/link';
 import styles from './Header.module.css'
+import Link from 'next/link';
 import { FaPersonThroughWindow } from "react-icons/fa6";
 import { PiExamFill } from "react-icons/pi";
 import { IoSettings } from "react-icons/io5";
