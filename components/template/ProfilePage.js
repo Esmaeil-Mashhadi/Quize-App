@@ -26,14 +26,18 @@ function ProfilePage({user , quizOptions}) {
 
     const dashSettingStyle = {
         '--scale' : leftClick ? "1" : "0",
+        '--opacity': leftClick? "1" : "0",
         '--pointer': leftClick ? "all" :'none'
     }
     const gameSettingStyle = {
         '--scale' : rightClick ? "1" : "0",
+        '--opacity': rightClick? "1" : "0",
         '--pointer': rightClick ? "all" :'none'
     }
 
 
+    console.log(fadeRight);
+    console.log(fadeLeft);
   return (
     <div className={styles.container}>
             <div style={fadeLeft} className={styles.left}>
