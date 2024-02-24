@@ -149,3 +149,57 @@
     user-select: none;
     pointer-events: none;
 }
+
+
+@media screen and (max-width:900px) {
+    .formContainer{
+        width: 600px;
+    }
+
+   .inputes {
+    font-size: 12px;
+   }
+
+   .formContainer h3{
+    font-size: 15px;
+   }
+   .terms {
+    font-size: 12px;
+   }
+
+   .already{
+    font-size: 12px;
+   }
+   .errorMessage{
+    font-size: 10px;
+   }
+}
+
+@media screen and (max-width:600px) {
+    .container{
+        min-height: 600px ;
+    }
+    .right{
+        display: none;
+    }
+    .left{
+        width: 100%;
+    }
+
+    .formContainer {
+        width: 350px;
+    }
+}
+
+@media screen and (max-height:800px) {
+    .container{
+        min-height: 500px;
+    }
+    .formContainer{
+        height: 500px;
+    }
+
+    .left{
+        gap: 30px;
+    }
+}

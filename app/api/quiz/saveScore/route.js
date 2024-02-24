@@ -7,9 +7,14 @@ export async function POST(req){
     try {
         await connectDB()
         const email = await checkUserExistence(req)
-        const {score , category , totalQuestions , prevChoice} = await req.json()
+        const {score , category , totalQuestions , index , questionIndex , correctIndex} = await req.json()
+        let {prevChoice} = await userModel.findOne({email} , {prevChoice : 1 , _id:0})
+
+          score ? prevChoice[questionIndex] = {[index]:'correct'} : prevChoice[questionIndex]= {[index]:"wrong" , [correctIndex]:"correct"}
+
         const checkCurrentCategoryExistence = await userModel.findOne({$and:[{email} , {'currentScore.category' : category}]})
         const checkUserCategoryExistence = await userModel.findOne({$and:[{email} , {'userScore.category' : category}]})
+
         if(checkUserCategoryExistence){
             const updateCategory = await userModel.updateOne({$and:[{email , "userScore.category" :category}]}, {$inc:{
                 'userScore.$.score': score , 'userScore.$.totalCorrectAnswers': score ? 1 : 0
@@ -26,8 +31,7 @@ export async function POST(req){
         }
         if(checkCurrentCategoryExistence){
             const savedScore = await userModel.updateOne({$and :[{email , 'currentScore.category' : category}]} ,
-             {$set :{'currentScore.$.totalQuestions' : totalQuestions } ,
-              $push:{prevChoice : prevChoice},
+             {$set :{'currentScore.$.totalQuestions' : totalQuestions , prevChoice } ,
               $inc:{'currentScore.$.score' :score , 'currentScore.$.totalCorrectAnswers': score ? 1 : 0 }})
             if(!savedScore.modifiedCount){
                 return NextResponse.json({error:"something went wrong "} , {status:500})
@@ -39,7 +43,9 @@ export async function POST(req){
                 {
                   $push: {
                       currentScore: { score, category, totalQuestions , totalCorrectAnswers : score ? 1 : 0},
-                      prevChoice: prevChoice ,
+                  },
+                  $set :{
+                    prevChoice
                   }
                 }
               );

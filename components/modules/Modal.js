@@ -44,7 +44,7 @@ function Modal({setShowModal}) {
 
   return (
     <div className={styles.container}>
-            <div className = {styles.modal}>
+            <div className = {styles.modal}> 
                     <div className={styles.leftSide}>
                             <label>Category : {userScore?.category}</label>
                             <label>Total Question : {userScore?.totalQuestions}</label>

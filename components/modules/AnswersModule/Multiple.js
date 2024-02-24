@@ -10,6 +10,8 @@ function Multiple({dataStorage , setUserChoice , userChoice , questionIndex}) {
     '--right' :"green"
    }
 
+
+
    const myScore = difficulty == 'easy' ? 10 : difficulty == "medium" ? 15 : difficulty == "hard" ? 20 : null
 
    const answerHandler = async(index)=>{
@@ -34,7 +36,7 @@ function Multiple({dataStorage , setUserChoice , userChoice , questionIndex}) {
 
     <div className={styles.buttonContainer}>
        {allAnswers?.map((item , index) => (
-        <button disabled={Object.keys(userChoice).length}  style={userChoice[index] == "correct" ? {background:answerStyles['--right']}
+        <button key={index} disabled={Object.keys(userChoice).length}  style={userChoice[index] == "correct" ? {background:answerStyles['--right']}
               : userChoice[index] =="wrong" ? {background:answerStyles['--wrong']}  : null}
               onClick={()=>answerHandler(index)}>{item}
        </button>

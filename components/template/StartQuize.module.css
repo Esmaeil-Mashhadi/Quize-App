@@ -13,6 +13,9 @@
 .loading{
     margin: auto;
     width: fit-content;
+    height: 152px;
+    padding-top: 45px;
+    width: 60px;
 }
 
 .questionContainer{
@@ -41,12 +44,6 @@
 }
 
 
-.buttonContainer{
-    display: flex;
-    width: 30%;
-    justify-content: space-between;
-}
-
 .buttonContainer button{
     width: 70px;
     height: 70px;
@@ -71,7 +68,7 @@
 }
 
 .buttonContainer button:first-child{
-    transform: scale(-1);
+    transform: scaleX(-1);
     filter: invert(100%);
     position: absolute;
     left: 10%;
@@ -162,8 +159,9 @@
 
 
 @media screen and (max-width:500px) {
+
     .buttonContainer button{
-        top: 75%;
+        bottom: 15% !important;
     }
 
     .buttonContainer button:first-child{
@@ -176,9 +174,17 @@
     .questionContainer{
         width: 80%;
     }
+    .loading{
+        height: 125px;
+        width: 45px;
+        padding-top: 30px;
+    }
+
+
+
 }
 
-@media screen and (max-height:800px) {
+@media screen and (max-height:800px ) and (max-width:400px) {
     .buttonContainer button{
         top: 80%;
     }

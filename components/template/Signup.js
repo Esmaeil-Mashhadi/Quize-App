@@ -49,7 +49,6 @@ function Signup() {
             method:"POST" , body : JSON.stringify(data) , headers :{"Content-Type" :"application/json"}
         })
         const response = await res.json() 
-        console.log(response)
         if(response.status == "success"){
             toast.success(response.message)
             setTimeout(()=>{
@@ -66,6 +65,7 @@ function Signup() {
 
   return (
     <div className={styles.container}>
+           <Toaster />
         <div className={styles.formContainer}>
             <div className={styles.left}>
                  <h3>Sign up form</h3>
@@ -120,7 +120,6 @@ function Signup() {
                 <img src='quizeRegister.jpg' />
             </div>
         </div>
-        <Toaster />
     </div>
   )
 }
