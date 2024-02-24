@@ -45,7 +45,7 @@ function Signup() {
     }
 
     const sendHandler = async()=>{
-        const res = await fetch('http://localhost:3000/api/register' , {
+        const res = await fetch('/api/register' , {
             method:"POST" , body : JSON.stringify(data) , headers :{"Content-Type" :"application/json"}
         })
         const response = await res.json() 
