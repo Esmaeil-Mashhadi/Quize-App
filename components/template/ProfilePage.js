@@ -36,8 +36,6 @@ function ProfilePage({user , quizOptions}) {
     }
 
 
-    console.log(fadeRight);
-    console.log(fadeLeft);
   return (
     <div className={styles.container}>
             <div style={fadeLeft} className={styles.left}>

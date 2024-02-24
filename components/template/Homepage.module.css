@@ -5,6 +5,7 @@
     margin: 20px;
     width: 80%;
     margin: auto;
+    user-select: none;
     justify-content: space-around;
 }
 

@@ -42,12 +42,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 50px;
+    gap: 10px;
     white-space: nowrap;
 }
 
 .header svg{
-    scale: 5;
+    width: 80px;
+    height: 80px;
     transition: .2s ease;
     color: white;
 
@@ -55,7 +56,7 @@
 
 .header svg:hover{
 cursor: pointer;
-scale: 5.5;
+  scale: 1.1;
 filter:drop-shadow(0px 0px 1px yellow);
 }
 .newHeader{
@@ -68,7 +69,8 @@ filter:drop-shadow(0px 0px 1px yellow);
 
 }
 .newHeader svg{
-    scale: 3;
+    width: 40px;
+    height: 40px;
     cursor: pointer;
     transition: .2s ease;
     color: white;
@@ -78,7 +80,7 @@ filter:drop-shadow(0px 0px 1px yellow);
 }
 .newHeader svg:hover{
     filter:drop-shadow(0px 0px 1px yellow);
-    scale: 3.5;
+    scale: 1.1;
 }
 
 
@@ -116,21 +118,23 @@ filter:drop-shadow(0px 0px 1px yellow);
     width: 100%;
  }
 
+ .newHeader svg{
+    width: 35px;
+    height: 35px;
+ }
+
+ .header svg:hover{
+    scale: 1;
+ }
+ .newHeader svg:hover{
+    scale: 1;
+ }
  .left{
     height: var(--size);
     width: 100%;
  }
 
- .header svg:hover{
-    scale: 5;
-
-    filter: none;
- }
- .newHeader svg:hover{
-    scale: 3;
-
- filter: none;
- }
+ 
 
 }
 
