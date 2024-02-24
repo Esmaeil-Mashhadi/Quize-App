@@ -16,12 +16,12 @@ function ProfilePage({user , quizOptions}) {
 
     const fadeRight = {
         '--size' : leftClick ? "0px" : "100%",
-        '--opacity': leftClick && "0", 
+        '--opacity': leftClick ? "0" : "1", 
     }
 
     const fadeLeft = {
         '--size' : rightClick ? "0px" :"100%",
-        '--opacity': rightClick && "0", 
+        '--opacity': rightClick ? "0" : "1", 
     }
 
     const dashSettingStyle = {
@@ -32,6 +32,7 @@ function ProfilePage({user , quizOptions}) {
         '--scale' : rightClick ? "1" : "0",
         '--pointer': rightClick ? "all" :'none'
     }
+
 
   return (
     <div className={styles.container}>

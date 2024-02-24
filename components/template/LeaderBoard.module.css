@@ -128,7 +128,7 @@ transform: translate(50%, 50%);
 @media screen and (max-width:400px){
     .container{
         width: 320px;
-        font-size: 10px;
+        font-size: 12px;
         height: 500px;
     }
 
